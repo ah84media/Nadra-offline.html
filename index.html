@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-sx="f">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nadra – قاموس ألماني ⇄ عربي</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);
+--bg:#fff7fa;--card:#fff;--tx:#2a1a22;--mu:#8a6b78;--bd:#f3d3e0;--sh:0 4px 14px rgba(214,51,108,.12);
+--ac:#d6336c;--ac2:#fdeaf2;--de:#a61e4d;--g1:#ff8fb8;--g2:#b565e6;--fh:Georgia,"Times New Roman",serif;--fs:italic;--rad:22px;--ok:#2f9e44;--no:#e03131;--z:1}
+:root[data-sx="m"]{--bg:#f2f6fb;--tx:#10243a;--mu:#5d7289;--bd:#d3deec;--sh:0 4px 14px rgba(16,60,110,.14);--ac:#1c6dd0;--ac2:#e6f0fc;--de:#0b4a9e;--g1:#0f2c52;--g2:#1c8fa8;--fh:system-ui,-apple-system,"Segoe UI",sans-serif;--fs:normal;--rad:14px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1a1218;--card:#261a22;--tx:#f7e9f0;--mu:#c3a2b2;--bd:#42293a;--ac:#ff77a9;--ac2:#3a2230;--de:#ff9cc0}
+:root[data-sx="m"]:not([data-theme="light"]){--bg:#0e141d;--card:#17212e;--tx:#e8f0fa;--mu:#8fa6bf;--bd:#26364a;--ac:#5aa2ff;--ac2:#1d2c40;--de:#8cc0ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;font-size:calc(16px*var(--z));line-height:1.5;padding-bottom:96px}
+button{font-family:inherit;font-size:inherit;color:inherit}
+.w{max-width:640px;margin:0 auto;padding:0 14px}
+.hero{margin:0 -14px 14px;padding:16px 16px 18px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-radius:0 0 var(--rad) var(--rad);box-shadow:var(--sh);position:relative;overflow:hidden;text-align:center}
+.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.13);left:-40px;top:-60px}
+.logo{font-family:var(--fh);font-style:var(--fs);font-size:2.3em;font-weight:700;letter-spacing:1px;line-height:1.1;position:relative;z-index:1}
+.dirb{margin-top:8px;position:relative;z-index:1;border:0;background:rgba(255,255,255,.25);color:#fff;border-radius:30px;padding:7px 18px;font-weight:600;cursor:pointer}
+.tg1{position:absolute;z-index:2;top:12px;left:12px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.25);font-size:1.2em;cursor:pointer}
+.view{display:none}.view.on{display:block}
+.sb{display:flex;align-items:center;gap:6px;background:var(--card);border:2px solid var(--bd);border-radius:40px;padding:4px 12px;box-shadow:var(--sh)}
+.sb:focus-within{border-color:var(--ac)}
+.sb input,.ta{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--tx);font-size:1.05em;padding:10px 4px}
+.ic{border:0;background:none;cursor:pointer;font-size:1.2em;padding:6px;color:var(--ac)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{border:0;background:var(--ac2);color:var(--ac);border-radius:30px;padding:10px 16px;font-weight:600;cursor:pointer}
+.h2{text-align:center;color:var(--mu);font-size:1.1em;margin:18px 0 8px}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:var(--rad);padding:14px;margin-bottom:12px;box-shadow:var(--sh)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{position:relative;overflow:hidden;flex:1;min-width:120px;padding:12px;border-radius:30px;border:0;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font-weight:600;text-align:center;cursor:pointer}
+.btn.s{background:var(--ac2);color:var(--ac)}
+.btn input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:200px}
+.st{color:var(--mu);font-size:.9em;margin:8px 4px;min-height:1em}
+.row{background:var(--card);border:1px solid var(--bd);border-inline-start:5px solid var(--ac);border-radius:16px;margin-bottom:9px;overflow:hidden;box-shadow:var(--sh)}
+.hd{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer}
+.de{direction:ltr;text-align:left;color:var(--de);font-weight:700;font-size:1.08em;flex:1}
+.ar{font-size:1.05em;text-align:right;flex:1}
+.ex{display:none;padding:10px 14px 12px;border-top:1px dashed var(--bd);background:var(--ac2)}
+.row.open .ex{display:block}
+.e1{direction:ltr;text-align:left;color:var(--de);font-weight:600}.e2{margin-top:3px}
+.tg{font-size:.78em;color:var(--mu);direction:ltr;text-align:left}
+.acts{margin-top:4px}
+.sp{display:inline-block;width:14px;height:14px;border:2px solid var(--ac);border-top-color:transparent;border-radius:50%;animation:r 1s linear infinite;vertical-align:middle;margin-inline-end:6px}
+@keyframes r{to{transform:rotate(360deg)}}
+.pz{margin-top:10px;min-height:44px;border:2px dashed var(--bd);border-radius:14px;padding:10px;color:var(--mu);font-size:.9em}.pz:empty:before{content:attr(data-ph)}
+img#pv{max-width:100%;max-height:200px;border-radius:14px;display:none;margin-top:10px}
+.wod .de{font-size:1.2em}.wod .e1{margin-top:6px}
+.bn{position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--card);border-top:1px solid var(--bd);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -4px 14px rgba(0,0,0,.08)}
+.bn button{flex:1;border:0;background:none;padding:8px 2px 6px;color:var(--mu);font-size:.72em;cursor:pointer}
+.bn button i{display:block;font-style:normal;font-size:1.9em;line-height:1.2}
+.bn button.on{color:var(--ac);font-weight:700}
+.ta{width:100%;min-height:130px;resize:vertical;border:2px solid var(--bd);border-radius:16px;padding:12px;background:var(--card)}
+.big{font-size:1.4em;text-align:center;margin:16px 0}
+.qw{direction:ltr;text-align:center;font-size:1.7em;font-weight:700;color:var(--de);margin:10px 0 14px}
+.opt{display:block;width:100%;margin-bottom:8px;padding:13px;border-radius:14px;border:2px solid var(--bd);background:var(--card);cursor:pointer;font-size:1.05em}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.no{background:var(--no);color:#fff;border-color:var(--no)}
+.set{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.set:last-child{border:0}
+input[type=range]{width:55%}
+.empty{text-align:center;color:var(--mu);padding:20px}
+.chip.on{background:var(--ac);color:#fff}
+.card{background:var(--ac2);border:2px solid var(--bd);border-radius:20px;padding:26px 14px;min-height:150px;text-align:center;cursor:pointer}
+.card .bk{margin-top:14px;border-top:1px dashed var(--bd);padding-top:12px}
+.ct{width:100%;border-collapse:collapse;font-size:.95em}
+.ct th{background:var(--ac);color:#fff;padding:8px}
+.ct td{padding:8px;border-bottom:1px solid var(--bd);direction:ltr;text-align:left}
+.ct tr:nth-child(even) td{background:var(--ac2)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.tool{border:1px solid var(--bd);border-radius:18px;padding:14px 4px;background:var(--card);box-shadow:var(--sh);cursor:pointer;font-weight:600;font-size:.85em;color:var(--tx)}
+.tool i{display:block;font-style:normal;font-size:2em;margin-bottom:2px}
+.back{border:0;background:none;color:var(--ac);font-weight:600;cursor:pointer;padding:2px 0 10px}
+.bub{max-width:88%;padding:10px 14px;border-radius:18px;margin:8px 0;white-space:pre-wrap}
+.bub.me{background:var(--ac);color:#fff;margin-inline-start:auto;direction:ltr;text-align:left}
+.bub.me .f{direction:rtl;text-align:right;border-top:1px solid rgba(255,255,255,.45);margin-top:6px;padding-top:4px;font-size:.88em}
+.bub.ai{background:var(--card);border:1px solid var(--bd)}
+.bub .d{direction:ltr;text-align:left;font-weight:600;color:var(--de)}
+.bub .a{font-size:.9em;color:var(--mu);margin-top:3px}
+.fx{background:var(--ac2);border-radius:12px;padding:8px 10px;margin-top:8px}
+.fx s{color:var(--no)}.fx b{color:var(--ok)}
+.score{font-size:2.2em;font-weight:700;text-align:center;min-height:1.2em}
+.tgi{border:1px solid var(--bd);border-radius:20px;padding:6px 12px;background:var(--card);color:var(--tx);margin-top:6px;width:70%;font-size:.9em}
+.tagbar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.tools{grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}
+.tool{font-size:.72em;padding:10px 2px}
+.sec{text-align:right;margin:14px 2px 0;font-weight:700}
+.sr{display:flex;align-items:center;gap:12px}
+.sf{text-align:center;min-width:64px}.sf b{display:block;font-size:1.8em;line-height:1}.sf small{color:var(--mu);font-size:.7em}
+.sm{flex:1;display:flex;flex-direction:column;gap:4px}.sm small{color:var(--mu);font-size:.78em}
+.pbar{height:10px;background:var(--ac2);border-radius:10px;overflow:hidden}.pbar span{display:block;height:100%;background:linear-gradient(90deg,var(--g1),var(--g2))}
+.wk{display:flex;align-items:flex-end;gap:3px;height:44px}.wk i{display:block;width:7px;background:var(--ac);border-radius:3px;opacity:.8}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:10px;color:#fff}.ov img{max-width:100%;max-height:70%;border-radius:16px}
+.wd{border-bottom:1px dotted var(--ac);cursor:pointer}.wd.on{background:var(--ac2);color:var(--ac)}
+select.tgi{width:100%;margin-bottom:6px}
+.mn:empty{display:none}.mn{margin-top:8px;display:flex;gap:6px;align-items:flex-start;justify-content:space-between}.mn.fx span{flex:1}
+</style>
+<script>
+/* Nadra standalone shim: lets the same page run outside claude.ai (Gemini free tier or Anthropic API) */
+(function(){
+ if(window.claude)return;
+ function ls(k,v){try{if(v===undefined)return localStorage.getItem(k)||'';if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return ''}}
+ function b64(blob){return new Promise(function(r){var f=new FileReader();f.onload=function(){r(f.result.split(',')[1])};f.readAsDataURL(blob)})}
+ async function call(input,opts){
+  opts=opts||{};
+  var prov=ls('n-prov')||'gemini',key=ls('n-key-'+prov);
+  if(!key)throw new Error('أدخل مفتاح API من الإعدادات لتفعيل الميزات الذكية');
+  var msgs=typeof input==='string'?[{role:'user',content:input}]:input.map(function(m){return {role:m.role,content:m.content}});
+  var imgs=opts.images?(Array.isArray(opts.images)?opts.images:[opts.images]):[];
+  var res,d;
+  if(prov==='gemini'){
+    var model=opts.modelTier==='quick'?'gemini-2.5-flash-lite':'gemini-2.5-flash';
+    var contents=msgs.map(function(m){return {role:m.role==='assistant'?'model':'user',parts:[{text:String(m.content)}]}});
+    if(imgs.length){var ps=contents[contents.length-1].parts;for(var i=0;i<imgs.length;i++)ps.unshift({inline_data:{mime_type:imgs[i].type||'image/jpeg',data:await b64(imgs[i])}})}
+    res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent',{method:'POST',signal:opts.signal,headers:{'content-type':'application/json','x-goog-api-key':key},body:JSON.stringify({contents:contents,generationConfig:{maxOutputTokens:8192}})});
+    d=await res.json();
+    if(!res.ok){var e1=new Error((d.error&&d.error.message)||('HTTP '+res.status));e1.code=res.status===429?'rate_limited':'error';throw e1}
+    var c=(d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[];
+    return {text:c.map(function(p){return p.text||''}).join('')};
+  }
+  if(imgs.length){var last=msgs[msgs.length-1],parts=[];for(var j=0;j<imgs.length;j++)parts.push({type:'image',source:{type:'base64',media_type:imgs[j].type||'image/jpeg',data:await b64(imgs[j])}});parts.push({type:'text',text:last.content});last.content=parts}
+  var am=opts.modelTier==='quick'?'claude-haiku-5-5':'claude-sonnet-5-5';
+  res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',signal:opts.signal,headers:{'content-type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:am,max_tokens:4096,messages:msgs})});
+  d=await res.json();
+  if(!res.ok){var e2=new Error((d.error&&d.error.message)||('HTTP '+res.status));e2.code=res.status===429?'rate_limited':'error';throw e2}
+  return {text:(d.content||[]).map(function(c){return c.text||''}).join('')};
+ }
+ var sample=function(i,o){return call(i,o)};
+ sample.json=async function(i,o){var r=await call(i,o),t=r.text.replace(/```json|```/g,'').trim(),a=t.search(/[\[{]/);if(a>0)t=t.slice(a);var e=Math.max(t.lastIndexOf(']'),t.lastIndexOf('}'));t=t.slice(0,e+1);return JSON.parse(t)};
+ sample.limits=async function(){return {images:true}};
+ var dl={save:async function(o){var b=o.data instanceof Blob?o.data:new Blob([o.data]),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=o.filename;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);return {status:'saved'}}};
+ window.claude={use:async function(n){if(n==='sample')return sample;if(n==='downloads')return dl;throw new Error('غير متاح')}};
+})();
+</script>
+</head>
+<body>
+<div class="w">
+<div class="hero"><button class="tg1" id="thb" aria-label="الثيم">🌸</button><div class="logo">Nadra</div><button class="dirb" id="dirb"></button></div>
+
+<!-- القاموس -->
+<section id="v-home" class="view on">
+<div class="sb"><span>🔍</span><input id="q" type="text" autocomplete="off"><button class="ic" id="clr" style="display:none" aria-label="مسح">✕</button><button class="ic" id="mic" aria-label="صوت">🎤</button></div>
+<div id="hst" class="st"></div><div id="res"></div>
+<div id="stats" class="box"></div>
+<div class="sec">📚 تعلّم</div><div class="tools">
+<button class="tool" data-go="read"><i>📖</i>قارئ النصوص</button>
+<button class="tool" data-go="lists"><i>📋</i>قوائم المفردات</button>
+<button class="tool" data-go="gram"><i>📐</i>القواعد</button>
+<button class="tool" data-go="conj"><i>🔤</i>التصريف</button></div>
+<div class="sec">🎯 تدرّب</div><div class="tools">
+<button class="tool" data-go="practice"><i>🧠</i>تمارين</button>
+<button class="tool" data-go="art"><i>🅰️</i>المقالات والجمع</button>
+<button class="tool" data-go="dict"><i>✏️</i>الإملاء</button>
+<button class="tool" data-go="pron"><i>🎙️</i>النطق</button></div>
+<div class="sec">🛠️ استخدم</div><div class="tools" style="grid-template-columns:repeat(5,1fr);gap:6px">
+<button class="tool" data-go="fix"><i>✍️</i>تصحيح الجمل</button>
+<button class="tool" data-go="write"><i>📝</i>كتابة الرسائل</button>
+<button class="tool" data-go="chat"><i>💬</i>محادثة</button>
+<button class="tool" data-go="cam"><i>📷</i>الكاميرا</button>
+<button class="tool" data-go="doc"><i>📄</i>ترجمة مستند</button></div>
+<div class="h2">كلمة اليوم</div><div id="wod"></div>
+<div class="h2">سجل الترجمة</div><div id="hist"></div>
+<div class="btns" style="margin-top:8px"><button class="chip" id="hclr">🗑️ مسح السجل</button></div>
+</section>
+
+<!-- ترجم -->
+<section id="v-tr" class="view">
+<textarea id="ta" class="ta" placeholder="اكتب جملة أو فقرة (ألماني أو عربي)"></textarea>
+<div class="btns" style="margin-top:8px"><button class="btn" id="trgo">ترجم</button><button class="btn s" id="trclr">مسح</button></div>
+<div id="tst" class="st"></div>
+<div id="tout" class="box" style="display:none"><div id="tres" style="font-size:1.15em;white-space:pre-wrap"></div><div class="acts"><button class="ic" id="trsp">🔊</button><button class="ic" id="trcp">📋</button><button class="ic" id="trsv">☆</button></div></div>
+</section>
+
+<!-- كاميرا -->
+<section id="v-cam" class="view">
+<div class="box">
+<div class="btns"><button class="btn" id="camBtn">📷 فتح الكاميرا</button><div class="btn s">🖼️ من المعرض<input id="gal" type="file" accept="image/*"></div></div>
+<div id="cv" style="display:none;margin-top:10px"><video id="vd" autoplay playsinline muted style="width:100%;border-radius:12px;background:#000"></video><div class="btns" style="margin-top:8px"><button class="btn" id="snap">📸 التقاط</button><button class="btn s" id="stop">إغلاق</button></div></div>
+<div id="pz" contenteditable="true" class="pz" data-ph="أو اضغط مطولًا هنا ثم «لصق» بعد نسخ صورة"></div>
+<img id="pv" alt="">
+</div>
+<div id="cst" class="st"></div><div id="cres"></div>
+</section>
+
+<!-- المحفوظات -->
+<section id="v-saved" class="view">
+<div class="sb"><span>🔍</span><input id="sq" type="text" placeholder="ابحث في المحفوظات"></div>
+<div class="btns" style="margin:10px 0"><button class="chip" data-go="practice">🧠 اختبار وبطاقات</button><button class="chip" id="pdfb">📄 تصدير PDF</button><button class="chip" id="exp">⬇️ CSV</button><button class="chip" id="ank">🃏 Anki</button><button class="chip" id="sclr">🗑️ مسح الكل</button></div>
+<div id="tagbar" class="tagbar"></div><datalist id="tl"></datalist><div id="sst" class="st"></div><div id="slist"></div>
+</section>
+
+<!-- تمارين -->
+<section id="v-practice" class="view"><button class="back" data-go="home">→ رجوع</button><div class="btns" style="margin:4px 0 12px"><button class="chip on" id="mq">🧠 اختبار</button><button class="chip" id="mc">🃏 بطاقات ومراجعة مجدولة</button><button class="chip" id="mm">📕 أخطائي</button></div><div id="qz" class="box"></div></section>
+
+<!-- قارئ -->
+<section id="v-read" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">📖 قارئ النصوص التفاعلي</div>
+<textarea id="rdt" class="ta" style="min-height:110px" placeholder="الصق نصًا ألمانيًا هنا (خبر، رسالة، فقرة من كتاب)"></textarea>
+<div class="btns" style="margin:8px 0"><button class="btn" id="rdgo">اعرض النص التفاعلي</button><button class="btn s" id="rdtr">ترجمة كاملة</button></div>
+<div id="rdo" class="box" style="display:none;direction:ltr;text-align:left;line-height:2.1"></div>
+<div id="rdi"></div><div id="rdfull" class="box" style="display:none"></div>
+</section>
+
+<!-- قوائم -->
+<section id="v-lists" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">📋 قوائم مفردات حسب المستوى والموضوع</div>
+<div class="btns" id="lvb" style="margin-bottom:8px"></div>
+<div class="btns" id="tpb" style="margin-bottom:8px"></div>
+<input id="lti" class="tgi" style="width:100%" placeholder="أو اكتب موضوعًا آخر (مثال: السيارة)">
+<div class="btns" style="margin:8px 0"><button class="btn" id="lgo">أنشئ القائمة</button></div>
+<div id="lst" class="st"></div><div id="lres"></div>
+<div class="btns"><button class="btn s" id="ladd" style="display:none">➕ أضف الكل إلى المحفوظات</button></div>
+</section>
+
+<!-- قواعد -->
+<section id="v-gram" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">📐 شرح القواعد بالعربية</div>
+<div class="btns" id="gtb" style="margin-bottom:8px"></div>
+<input id="gti" class="tgi" style="width:100%" placeholder="أو اكتب قاعدة (مثال: Wechselpräpositionen)">
+<div class="btns" style="margin:8px 0"><button class="btn" id="ggo">اشرح</button></div>
+<div id="gst" class="st"></div><div id="gout"></div>
+</section>
+
+<!-- مقالات -->
+<section id="v-art" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">🅰️ المقالات والجمع</div>
+<div id="agbox" class="box"></div>
+</section>
+
+<!-- إملاء -->
+<section id="v-dict" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">✏️ الإملاء (Diktat)</div>
+<div class="box" style="text-align:center"><div class="btns"><button class="btn s" id="dkp">🔊 استمع</button><label class="chip"><input type="checkbox" id="dks"> 🐢 بطيء</label></div>
+<input id="dki" class="tgi" style="width:100%" dir="ltr" placeholder="اكتب ما سمعته">
+<div class="btns" style="margin-top:8px"><button class="btn" id="dkc">تحقق</button><button class="btn s" id="dkn">التالي ➜</button></div>
+<div id="dkr" style="margin-top:10px"></div></div>
+</section>
+
+<!-- كتابة -->
+<section id="v-write" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">📝 مساعد كتابة الرسائل (Goethe / telc)</div>
+<select id="wty" class="tgi"><option>رسالة رسمية (Formeller Brief)</option><option>رسالة غير رسمية (Persönlicher Brief)</option><option>شكوى</option><option>طلب موعد أو حجز</option><option>دعوة</option><option>شكر أو اعتذار</option></select>
+<select id="wlv" class="tgi"><option>A1</option><option selected>A2</option><option>B1</option><option>B2</option></select>
+<input id="wtp" class="tgi" style="width:100%" placeholder="المهمة (مثال: اكتب لصديقك عن عطلتك)">
+<textarea id="wtx" class="ta" style="min-height:140px;margin-top:6px" placeholder="اكتب رسالتك بالألمانية هنا للتقييم..."></textarea>
+<div class="btns" style="margin:8px 0"><button class="btn" id="wev">قيّم رسالتي</button><button class="btn s" id="wmd">نموذج جاهز</button></div>
+<div id="wst" class="st"></div><div id="wo"></div>
+</section>
+
+<!-- مستند -->
+<section id="v-doc" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">📄 ترجمة المستندات</div>
+<div class="box"><div class="btns"><div class="btn">📎 اختر ملفًا<input id="dfi" type="file" accept=".txt,.md,.csv,.html,.htm,.rtf,.json,.pdf,.docx,.odt,.pptx,image/*"></div></div>
+<div class="st">يدعم: TXT وPDF وDOCX وPPTX وODT وRTF وHTML وCSV وصور المستندات. ملفات .doc القديمة: احفظها بصيغة docx أو pdf أولًا. المستندات الطويلة تستهلك من حدّ استخدامك.</div></div>
+<textarea id="dtx" class="ta" style="min-height:150px" placeholder="أو الصق النص هنا. وبعد رفع ملف سيظهر نصه هنا ويمكنك تعديله قبل الترجمة"></textarea>
+<div class="btns" style="margin:8px 0"><button class="btn" id="dgo">ترجم</button><button class="btn s" id="dstop" style="display:none">إيقاف</button><button class="btn s" id="drd">📖 القارئ التفاعلي</button></div>
+<div id="dst" class="st"></div><div id="dout"></div>
+<div class="btns" id="dact" style="display:none"><button class="chip" id="dcp">📋 نسخ الترجمة</button><button class="chip" id="ddl1">⬇️ الترجمة .txt</button><button class="chip" id="ddl2">⬇️ أصل + ترجمة</button></div>
+</section>
+
+<!-- تصحيح -->
+<section id="v-fix" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">✍️ تصحيح الجمل</div>
+<textarea id="fxt" class="ta" style="min-height:100px" placeholder="اكتب جملة ألمانية وسأصحح أخطاءها وأشرحها بالعربية"></textarea>
+<div class="btns" style="margin-top:8px"><button class="btn" id="fxgo">صحّح</button></div>
+<div id="fxs" class="st"></div><div id="fxo"></div></section>
+
+<!-- محادثة -->
+<section id="v-chat" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">💬 محادثة تدريبية — اختر موقفًا</div>
+<div class="chips" id="scn"></div>
+<div id="clog"></div><div id="cs3" class="st"></div>
+<div class="sb"><input id="cin" type="text" placeholder="اكتب بالألمانية..."><button class="ic" id="cmic" aria-label="صوت">🎤</button><button class="ic" id="csend" aria-label="إرسال">➤</button></div>
+</section>
+
+<!-- نطق -->
+<section id="v-pron" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="h2" style="margin-top:0">🎙️ تدريب النطق</div>
+<div class="box" style="text-align:center"><div class="qw" id="pw"></div><div id="pa" style="color:var(--mu)"></div>
+<div class="btns" style="margin-top:10px"><button class="btn s" id="plis">🔊 استمع</button><button class="btn" id="prec">🎤 انطق</button></div>
+<div id="psc" class="score"></div><div id="pst" class="st"></div>
+<div class="btns"><button class="chip" id="pnext">⏭️ كلمة أخرى</button></div></div>
+<input id="pin" type="text" class="tgi" style="width:100%" placeholder="أو اكتب كلمة/جملة للتدرب عليها ثم Enter">
+</section>
+
+<!-- تصريف -->
+<section id="v-conj" class="view"><button class="back" data-go="home">→ رجوع</button>
+<div class="sb"><span>🔤</span><input id="cq" type="text" placeholder="اكتب فعلًا (gehen / يذهب / ging)"></div>
+<div class="btns" style="margin:10px 0"><button class="btn" id="cgo">صرّف الفعل</button></div>
+<div id="cst2" class="st"></div><div id="cout"></div>
+</section>
+
+<!-- الإعدادات -->
+<section id="v-set" class="view">
+<div class="box">
+<div class="set"><span>الثيم</span><span class="btns"><button class="chip" id="sf">🌸 أنثوي</button><button class="chip" id="sm">🌙 ذكوري</button></span></div>
+<div class="set"><span>حجم الخط</span><input type="range" id="fz" min="85" max="135" step="5"></div>
+<div class="set"><span>نطق النتائج تلقائيًا</span><input type="checkbox" id="auto"></div>
+<div class="set"><span>الهدف اليومي (أنشطة) <b id="gv"></b></span><input type="range" id="goal" min="5" max="50" step="5"></div>
+<div class="set"><span>عدد المحفوظات / السجل</span><span id="cnt"></span></div>
+</div>
+<div class="box"><div class="set"><span>🔑 مفتاح الذكاء الاصطناعي</span></div>
+<select id="nprov" class="tgi"><option value="gemini">Google Gemini — مجاني (بحدود استخدام)</option><option value="anthropic">Anthropic Claude — مدفوع</option></select>
+<input id="nkey" type="password" class="tgi" style="width:100%" dir="ltr" placeholder="الصق المفتاح هنا">
+<div class="btns" style="margin-top:8px"><button class="btn" id="nkok">حفظ المفتاح</button><button class="btn s" id="nkdel">حذف</button></div>
+<div id="nks" class="st"></div>
+<div class="st">للمفتاح المجاني: افتح aistudio.google.com/apikey وسجّل بحساب Google ثم «Create API key». المفتاح يُخزَّن على جهازك فقط. تنبيه: في الخطة المجانية قد تستخدم Google ما ترسله لتحسين منتجاتها، فتجنّب إرسال مستندات خاصة.</div></div>
+<div class="box"><div class="set"><span>💾 نسخة احتياطية</span><span class="btns"><button class="chip" id="bkx">⬇️ تصدير</button><button class="chip" id="bki">⬆️ استعادة</button></span></div>
+<div id="bkbox" style="display:none"><textarea id="bkt" class="ta" style="min-height:90px" placeholder="الصق هنا نص النسخة الاحتياطية ثم اضغط تأكيد"></textarea><div class="btns" style="margin-top:6px"><button class="btn" id="bkok">تأكيد الاستعادة</button></div></div>
+<div id="bks" class="st"></div>
+<div class="set"><span>🗑️ حذف كل المحفوظات</span><button class="chip" id="sclr2">حذف</button></div>
+<div class="set"><span>🗑️ حذف السجل كاملًا</span><button class="chip" id="hclr2">حذف</button></div></div>
+<div class="box"><b>📲 إضافة إلى الشاشة الرئيسية</b><div class="st">افتح الرابط في Chrome ثم ⋮ ← «إضافة إلى الشاشة الرئيسية». ملاحظة: الصفحة مستضافة داخل claude.ai، فقد تُفتح داخل المتصفح بدل تطبيق مستقل.</div></div>
+<div class="empty">Nadra • قاموس ألماني ⇄ عربي<br>بياناتك محفوظة على جهازك فقط</div>
+</section>
+</div>
+
+<nav class="bn">
+<button data-go="set"><i>⚙️</i>الإعدادات</button>
+<button data-go="cam"><i>📷</i>كاميرا</button>
+<button data-go="home" class="on"><i>🔍</i>القاموس</button>
+<button data-go="tr"><i>🌐</i>ترجم</button>
+<button data-go="saved"><i>⭐</i>المحفوظات</button>
+</nav>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var root=document.documentElement,mem={};
+function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return mem[k]!==undefined?mem[k]:d}}
+function sv(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var S={dir:ld('n-dir','de'),sx:ld('n-sx','f'),fz:ld('n-fz',100),auto:ld('n-auto',false),saved:ld('n-saved',[]),hist:ld('n-hist',[]),mist:ld('n-mist',{}),stats:ld('n-stats',{}),goal:ld('n-goal',10),notes:ld('n-notes',{})};
+var BANK=[
+['die Einheit','وحدة','Die Einheit der Familie ist wichtig.','وحدة العائلة مهمة.'],
+['die Mahnung','تحذير / إنذار','Ich habe eine Mahnung bekommen.','وصلني إنذار.'],
+['die Messe','معرض','Wir besuchen die Messe in Köln.','نزور المعرض في كولونيا.'],
+['die Premiere','العرض الأول','Die Premiere des Films ist morgen.','العرض الأول للفيلم غدًا.'],
+['die Spezialität','اختصاص / طبق مميز','Das ist eine Spezialität unserer Region.','هذا طبق مميز في منطقتنا.'],
+['der Steckbrief','ملف تعريفي','Schreib einen Steckbrief über dich.','اكتب ملفًا تعريفيًا عن نفسك.'],
+['verpassen','فاتَ','Ich habe den Bus verpasst.','فاتتني الحافلة.'],
+['kompliziert','معقّد','Die Grammatik ist kompliziert.','القواعد معقدة.'],
+['der Händler','تاجر','Der Händler verkauft frisches Obst.','التاجر يبيع فاكهة طازجة.'],
+['ehrlich','صادق','Er ist immer ehrlich.','هو دائمًا صادق.'],
+['fleißig','مجتهد','Sie ist sehr fleißig.','هي مجتهدة جدًا.'],
+['sparsam','مقتصد','Mein Vater ist sehr sparsam.','أبي مقتصد جدًا.'],
+['übrigens','بالمناسبة','Übrigens, ich komme morgen später.','بالمناسبة، سأتأخر غدًا.'],
+['schaffen','أنجز / استطاع','Ich schaffe das!','أستطيع فعل ذلك!'],
+['stressig','مُرهق','Die Woche war sehr stressig.','كان الأسبوع مرهقًا جدًا.'],
+['sich ärgern','انزعج / غضب','Ich ärgere mich über den Lärm.','أنزعج من الضجيج.'],
+['sympathisch','لطيف / محبوب','Der Lehrer ist sehr sympathisch.','المعلم لطيف جدًا.'],
+['pünktlich','دقيق في المواعيد','Der Zug ist pünktlich.','القطار في موعده.']
+].map(function(a){return {de:a[0],ar:a[1],ex_de:a[2],ex_ar:a[3]}});
+
+var NOUNS=[['das','Buch','Bücher','كتاب'],['der','Stift','Stifte','قلم'],['das','Haus','Häuser','بيت'],['die','Schule','Schulen','مدرسة'],['der','Lehrer','Lehrer','معلم'],['der','Freund','Freunde','صديق'],['die','Familie','Familien','عائلة'],['die','Arbeit','Arbeiten','عمل'],['die','Zeit','Zeiten','وقت'],['der','Tag','Tage','يوم'],['die','Woche','Wochen','أسبوع'],['der','Monat','Monate','شهر'],['das','Jahr','Jahre','سنة'],['der','Name','Namen','اسم'],['die','Sprache','Sprachen','لغة'],['das','Auto','Autos','سيارة'],['der','Tisch','Tische','طاولة'],['der','Stuhl','Stühle','كرسي'],['die','Tür','Türen','باب'],['das','Fenster','Fenster','نافذة'],['die','Stadt','Städte','مدينة'],['das','Kind','Kinder','طفل'],['die','Frau','Frauen','امرأة'],['der','Mann','Männer','رجل'],['der','Apfel','Äpfel','تفاحة'],['das','Brot','Brote','خبز'],['die','Hand','Hände','يد'],['der','Bruder','Brüder','أخ'],['die','Mutter','Mütter','أم'],['der','Vater','Väter','أب'],['das','Wasser','Wasser','ماء'],['die','Katze','Katzen','قطة'],['der','Hund','Hunde','كلب'],['die','Reise','Reisen','رحلة']];
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML}
+function key(w){return String(w.de||'').toLowerCase().trim()}
+function isSaved(w){return S.saved.some(function(x){return key(x)===key(w)})}
+function toggleSave(w){
+  if(isSaved(w)) S.saved=S.saved.filter(function(x){return key(x)!==key(w)});
+  else S.saved.unshift({de:w.de,ar:w.ar,ex_de:w.ex_de||'',ex_ar:w.ex_ar||''});
+  sv('n-saved',S.saved);
+}
+function addHist(w){
+  S.hist=S.hist.filter(function(x){return key(x)!==key(w)});
+  S.hist.unshift({de:w.de,ar:w.ar,ex_de:w.ex_de||'',ex_ar:w.ex_ar||''});
+  S.hist=S.hist.slice(0,40); sv('n-hist',S.hist); renderHist();
+}
+function speak(t,lang){try{var u=new SpeechSynthesisUtterance(t);u.lang=lang||'de-DE';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(x){}}
+function isAr(t){return /[\u0600-\u06FF]/.test(t)}
+function copy(t){try{navigator.clipboard.writeText(t)}catch(x){}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function uniq(a){var m={};return a.filter(function(w){var k=key(w);if(m[k])return false;m[k]=1;return true})}
+
+/* ---------- rows ---------- */
+function mkRow(w,i,onChange,onDel,tagged){
+  var r=document.createElement('div');r.className='row';
+  var ex=w.ex_de?'<div class="tg">Beispiel</div><div class="e1">'+esc(w.ex_de)+'</div><div class="e2">'+esc(w.ex_ar)+'</div>':'<div class="e2">هذه جملة كاملة، لا يوجد مثال إضافي.</div>';
+  r.innerHTML='<div class="hd"><span class="de"></span><span class="ar"></span><button class="ic stb" aria-label="حفظ"></button></div><div class="ex">'+ex+'<div class="mn"></div><div class="acts"><button class="ic sp1" aria-label="نطق">🔊</button><button class="ic cp" aria-label="نسخ">📋</button><button class="ic shb" aria-label="مشاركة">🖼️</button><button class="ic mnb" aria-label="حيلة تذكر">💡</button>'+(onDel?'<button class="ic dl" aria-label="حذف">🗑️</button>':'')+'</div>'+(tagged?'<input class="tgi" list="tl" placeholder="📁 مجلد (مثل: عمل، سفر)">':'')+'</div>';
+  r.querySelector('.de').textContent=(i!=null?(i+1)+'. ':'')+w.de;
+  r.querySelector('.ar').textContent=w.ar;
+  var st=r.querySelector('.stb');st.textContent=isSaved(w)?'★':'☆';
+  r.querySelector('.hd').addEventListener('click',function(){r.classList.toggle('open');if(S.auto&&r.classList.contains('open'))speak(w.ex_de||w.de)});
+  st.addEventListener('click',function(e){e.stopPropagation();toggleSave(w);st.textContent=isSaved(w)?'★':'☆';renderSaved();if(onChange)onChange()});
+  r.querySelector('.sp1').addEventListener('click',function(e){e.stopPropagation();speak(w.ex_de||w.de)});
+  r.querySelector('.cp').addEventListener('click',function(e){e.stopPropagation();copy(w.de+' = '+w.ar)});
+  r.querySelector('.shb').addEventListener('click',function(e){e.stopPropagation();shareCard(w)});
+  var mn=r.querySelector('.mn');
+  function showMn(){
+    var n=S.notes[key(w)];mn.innerHTML='';
+    if(!n){mn.className='mn';return}
+    mn.className='mn fx';var t=document.createElement('span');t.textContent='💡 '+n;
+    var x=document.createElement('button');x.className='ic';x.textContent='✕';x.setAttribute('aria-label','حذف الحيلة');
+    x.addEventListener('click',function(e){e.stopPropagation();delete S.notes[key(w)];sv('n-notes',S.notes);showMn()});
+    mn.appendChild(t);mn.appendChild(x);
+  }
+  showMn();
+  r.querySelector('.mnb').addEventListener('click',async function(e){
+    e.stopPropagation();r.classList.add('open');mn.className='mn fx';busy(mn,'جاري ابتكار حيلة تذكّر...');
+    try{
+      var sm=await getS();
+      var a=await sm.json('أنت مدرّب ذاكرة للناطقين بالعربية. للكلمة الألمانية "'+w.de+'" (معناها: '+w.ar+') ابتكر حيلة تذكّر قصيرة وطريفة بالعربية تربط نطق الكلمة الألمانية بمعناها (كلمة أو عبارة عربية قريبة في النطق مع صورة ذهنية). أعد JSON فقط بدون ```: {"note":"الحيلة في جملتين كحد أقصى"}',{modelTier:'default',cache:false});
+      if(Array.isArray(a))a=a[0];
+      S.notes[key(w)]=String(a.note||'').trim();sv('n-notes',S.notes);showMn();act();
+    }catch(x){fail(mn,x)}
+  });
+  if(onDel)r.querySelector('.dl').addEventListener('click',function(e){e.stopPropagation();onDel()});
+  if(tagged){var ti=r.querySelector('.tgi');ti.value=w.tag||'';ti.addEventListener('change',function(){w.tag=ti.value.trim();sv('n-saved',S.saved);renderTagbar()})}
+  return r;
+}
+function renderList(box,stEl,list){
+  box.innerHTML='';
+  if(list&&!Array.isArray(list)) list=[list];
+  if(!list||!list.length){stEl.textContent='لم أجد نتيجة.';return []}
+  stEl.textContent='عدد النتائج: '+list.length+' — اضغط على أي عنصر لرؤية المثال';
+  list.forEach(function(w,i){box.appendChild(mkRow(w,i))});
+  return list;
+}
+function renderHist(){
+  var b=$('hist');b.innerHTML='';
+  if(!S.hist.length){b.innerHTML='<div class="empty">لا يوجد سجل بعد. ابدأ بالبحث عن كلمة.</div>';return}
+  S.hist.forEach(function(w){b.appendChild(mkRow(w,null,null,function(){S.hist=S.hist.filter(function(x){return key(x)!==key(w)});sv('n-hist',S.hist);renderHist();cnt()}))});
+}
+var curTag='';
+function tagsOf(){var m={};S.saved.forEach(function(w){if(w.tag)m[w.tag]=1});return Object.keys(m)}
+function renderTagbar(){
+  var tb=$('tagbar'),ts=tagsOf();tb.innerHTML='';
+  if(curTag&&ts.indexOf(curTag)<0)curTag='';
+  $('tl').innerHTML=ts.map(function(t){return '<option value="'+esc(t)+'">'}).join('');
+  if(!ts.length)return;
+  [''].concat(ts).forEach(function(t){var b=document.createElement('button');b.className='chip'+(t===curTag?' on':'');b.textContent=t?'📁 '+t:'الكل';b.addEventListener('click',function(){curTag=t;renderSaved()});tb.appendChild(b)});
+}
+function savedView(){var f=$('sq').value.trim().toLowerCase();return S.saved.filter(function(w){return (!curTag||w.tag===curTag)&&(!f||(w.de+' '+w.ar).toLowerCase().indexOf(f)>-1)})}
+function renderSaved(){
+  var b=$('slist');b.innerHTML='';renderTagbar();
+  var l=savedView();
+  $('sst').textContent=S.saved.length?('الكلمات المحفوظة: '+S.saved.length+(curTag?' • في «'+curTag+'»: '+l.length:'')):'';
+  if(!l.length){b.innerHTML='<div class="empty">'+(S.saved.length?'لا نتائج.':'لا توجد كلمات محفوظة. اضغط ☆ بجانب أي كلمة لحفظها.')+'</div>';return}
+  l.forEach(function(w){b.appendChild(mkRow(w,null,renderSaved,function(){S.saved=S.saved.filter(function(x){return key(x)!==key(w)});sv('n-saved',S.saved);renderSaved();cnt()},true))});
+}
+function renderWod(){
+  var d=Math.floor(Date.now()/864e5),w=BANK[d%BANK.length],b=$('wod');b.innerHTML='';
+  var r=mkRow(w);r.classList.add('wod','open');b.appendChild(r);
+}
+
+/* ---------- AI ---------- */
+var sample=null;
+async function getS(){
+  if(sample) return sample;
+  try{sample=await claude.use('sample')}catch(x){}
+  if(!sample) throw new Error('الترجمة الذكية غير متاحة هنا');
+  return sample;
+}
+var SYS='أنت قاموس ومترجم ألماني-عربي دقيق. أعد JSON فقط بدون أي شرح وبدون ```، مصفوفة كائنات: [{"de":"النص الألماني (للاسم أضف المقال مثل das Haus)","ar":"الترجمة العربية (حتى 3 معانٍ للكلمة)","ex_de":"جملة ألمانية قصيرة تستخدم الكلمة (فارغة إن كان العنصر جملة أصلاً)","ex_ar":"ترجمة جملة المثال"}]. ';
+function busy(el,m){el.innerHTML='<span class="sp"></span>'+m}
+function fail(el,e){
+  var c=e&&e.code;
+  el.textContent=c==='not_granted'?'لم يتم منح إذن الترجمة. أعد المحاولة ووافق.':c==='rate_limited'?'طلبات كثيرة، انتظر قليلًا.':'خطأ: '+((e&&(e.message||e.code))||e);
+}
+async function look(){
+  var t=$('q').value.trim();if(!t)return;
+  busy($('hst'),'جاري البحث...');$('res').innerHTML='';
+  try{
+    var s=await getS(),multi=t.split(/\s+/).length>1;
+    var hint='اتجاه المستخدم: '+(S.dir==='de'?'ألماني إلى عربي':'عربي إلى ألماني')+' (إن خالفت لغة النص هذا الاتجاه فاتبع لغة النص). ';
+    var p=SYS+hint+(multi?'ترجم هذه الجملة/النص: "'+t+'". العنصر الأول هو الجملة كاملة (de ألماني دائمًا و ar عربي دائمًا)، ثم أضف عناصر للكلمات المهمة فيها مع أمثلة.':'ابحث عن: "'+t+'". إن كانت عربية فاجعل de ترجمتها الألمانية (حتى 3 خيارات كعناصر منفصلة) و ar الكلمة العربية. وإن كانت ألمانية فعنصر أو اثنان للمعاني المختلفة.');
+    var r=renderList($('res'),$('hst'),await s.json(p,{modelTier:'quick',cache:false}));
+    if(r.length){act();addHist(r[0]);if(S.auto)speak(r[0].de)}
+  }catch(e){fail($('hst'),e)}
+}
+$('q').addEventListener('keydown',function(e){if(e.key==='Enter')look()});
+$('q').addEventListener('input',function(){$('clr').style.display=$('q').value?'':'none'});
+$('clr').addEventListener('click',function(){$('q').value='';$('clr').style.display='none';$('res').innerHTML='';$('hst').textContent=''});
+$('mic').addEventListener('click',function(){
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!R){$('hst').textContent='الإدخال الصوتي غير مدعوم هنا. جرّب متصفح الجوال.';return}
+  try{
+    var r=new R();r.lang=S.dir==='de'?'de-DE':'ar-SA';
+    r.onresult=function(e){$('q').value=e.results[0][0].transcript;$('clr').style.display='';look()};
+    r.onerror=function(e){$('hst').textContent='تعذر الإدخال الصوتي ('+e.error+')'};
+    $('hst').textContent='🎤 تحدّث الآن...';r.start();
+  }catch(x){$('hst').textContent='تعذر تشغيل الميكروفون.'}
+});
+
+/* ---------- translate page ---------- */
+var TR=null;
+$('trgo').addEventListener('click',async function(){
+  var t=$('ta').value.trim();if(!t)return;
+  busy($('tst'),'جاري الترجمة...');
+  try{
+    var s=await getS();
+    var r=await s('ترجم النص التالي: إن كان عربيًا فترجمه إلى الألمانية، وإن كان ألمانيًا فإلى العربية. أعد الترجمة فقط بدون أي شرح.\n\n'+t,{modelTier:'default',cache:false});
+    var out=(r.text||'').trim();
+    TR=isAr(t)?{de:out,ar:t}:{de:t,ar:out};
+    $('tres').textContent=out;$('tout').style.display='block';$('tst').textContent='';
+    $('trsv').textContent=isSaved(TR)?'★':'☆';
+    if(t.length<200)addHist({de:TR.de,ar:TR.ar});
+  }catch(e){fail($('tst'),e)}
+});
+$('trclr').addEventListener('click',function(){$('ta').value='';$('tout').style.display='none';$('tst').textContent=''});
+$('trsp').addEventListener('click',function(){if(TR){var o=$('tres').textContent;speak(o,isAr(o)?'ar-SA':'de-DE')}});
+$('trcp').addEventListener('click',function(){copy($('tres').textContent)});
+$('trsv').addEventListener('click',function(){if(!TR)return;toggleSave(TR);$('trsv').textContent=isSaved(TR)?'★':'☆';renderSaved()});
+
+/* ---------- camera ---------- */
+var stream=null;
+function shrink(src){
+  return new Promise(function(res,rej){
+    var img=new Image();
+    img.onload=function(){
+      var k=Math.min(1,1600/Math.max(img.width,img.height));
+      var c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      c.toBlob(function(b){res({blob:b,url:c.toDataURL('image/jpeg',0.5)})},'image/jpeg',0.85);
+    };
+    img.onerror=function(){rej(new Error('تعذر قراءة الصورة'))};
+    img.src=URL.createObjectURL(src);
+  });
+}
+async function doImage(file){
+  busy($('cst'),'جاري قراءة الصورة وترجمتها...');$('cres').innerHTML='';
+  try{
+    var s=await getS();
+    var lim=await s.limits();if(lim&&lim.images===false)throw new Error('إرسال الصور غير مفعّل');
+    var sh=await shrink(file);var pv=$('pv');pv.src=sh.url;pv.style.display='block';
+    var p=SYS+'هذه صورة ورقة. استخرج كل الكلمات والجمل الألمانية المكتوبة فيها بالترتيب (حتى بخط اليد، وصحّح الأخطاء الإملائية الواضحة) مع ترجمتها العربية. لكل كلمة مثال؛ والجملة الكاملة تُترجم كما هي. تجاهل الكلمات العربية الموجودة أصلًا في الصورة.';
+    renderList($('cres'),$('cst'),await s.json(p,{images:[sh.blob],modelTier:'default',cache:false}));
+  }catch(e){fail($('cst'),e)}
+}
+$('gal').addEventListener('change',function(ev){var f=ev.target.files[0];ev.target.value='';if(f)doImage(f)});
+$('pz').addEventListener('paste',function(ev){
+  var it=(ev.clipboardData&&ev.clipboardData.items)||[];
+  for(var i=0;i<it.length;i++){if(it[i].type.indexOf('image')===0){ev.preventDefault();doImage(it[i].getAsFile());break}}
+  setTimeout(function(){$('pz').innerHTML=''},50);
+});
+function closeCam(){if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}$('cv').style.display='none'}
+$('camBtn').addEventListener('click',async function(){
+  try{
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('الكاميرا غير مدعومة هنا');
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    $('vd').srcObject=stream;$('cv').style.display='block';$('cst').textContent='وجّه الكاميرا نحو الورقة ثم اضغط التقاط';
+  }catch(e){$('cst').textContent='الكاميرا محجوبة داخل هذا العارض ('+(e.name||e.message)+'). افتح الرابط في متصفح الجوال أو استخدم المعرض/اللصق.'}
+});
+$('snap').addEventListener('click',function(){
+  var v=$('vd');if(!v.videoWidth)return;
+  var c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);
+  c.toBlob(function(b){closeCam();doImage(b)},'image/jpeg',0.9);
+});
+$('stop').addEventListener('click',closeCam);
+
+/* ---------- quiz ---------- */
+var Q={list:[],i:0,sc:0};
+function pool(){return uniq(S.saved.concat(BANK))}
+function startQuiz(src){Q.src=src?'mist':'';Q.list=shuffle(src||pool()).slice(0,10);Q.i=0;Q.sc=0;showQ()}
+function showQ(){
+  var box=$('qz');
+  if(Q.i>=Q.list.length){
+    box.innerHTML='<div class="big">النتيجة: '+Q.sc+' / '+Q.list.length+(Q.sc>=Q.list.length*0.8?' 🎉':' 💪')+'</div><div class="btns"><button class="btn" id="again">إعادة الاختبار</button></div>';
+    $('again').addEventListener('click',function(){startMode()});return;
+  }
+  var w=Q.list[Q.i];
+  var opts=shuffle(shuffle(pool().filter(function(x){return key(x)!==key(w)})).slice(0,3).concat([w]));
+  box.innerHTML='<div class="tg">'+(Q.i+1)+' / '+Q.list.length+'</div><div class="qw"></div><div id="ops"></div>';
+  box.querySelector('.qw').textContent=w.de;
+  speak(w.de);
+  opts.forEach(function(o){
+    var b=document.createElement('button');b.className='opt';b.textContent=o.ar;
+    b.addEventListener('click',function(){
+      var all=box.querySelectorAll('.opt');
+      all.forEach(function(x){x.disabled=true;if(x.textContent===w.ar)x.classList.add('ok')});
+      act();if(o===w){Q.sc++;okMiss(w)}else{b.classList.add('no');logMiss(w)}
+      setTimeout(function(){Q.i++;showQ()},950);
+    });
+    $('ops').appendChild(b);
+  });
+}
+
+/* ---------- cards + spaced repetition ---------- */
+var SRS=ld('n-srs',{}),mode='quiz',CD={list:[],i:0,all:false},DAYS=[0,1,2,4,8,16];
+function due(){var n=Date.now();return S.saved.filter(function(w){var r=SRS[key(w)];return !r||r.due<=n})}
+function startMode(){
+  var ml=mistList();$('mm').textContent='📕 أخطائي ('+ml.length+')';
+  if(mode==='quiz')startQuiz();
+  else if(mode==='cards')startCards(false);
+  else if(ml.length>=1)startQuiz(ml);
+  else $('qz').innerHTML='<div class="big">لا توجد أخطاء مسجلة 🎉</div><div class="empty">الكلمات التي تخطئ فيها تُحفظ هنا تلقائيًا لتراجعها.</div>';
+}
+function setMode(m){mode=m;$('mq').classList.toggle('on',m==='quiz');$('mc').classList.toggle('on',m==='cards');$('mm').classList.toggle('on',m==='mist');startMode()}
+$('mm').addEventListener('click',function(){setMode('mist')});
+$('mq').addEventListener('click',function(){setMode('quiz')});
+$('mc').addEventListener('click',function(){setMode('cards')});
+function startCards(all){CD.all=all;CD.list=shuffle(all?pool():due());CD.i=0;showCard()}
+function showCard(){
+  var box=$('qz');
+  if(CD.i>=CD.list.length){
+    box.innerHTML='<div class="big">'+(CD.list.length?'انتهت المراجعة ✅':'لا توجد بطاقات مستحقة الآن 🎉')+'</div><div class="empty">كلماتك المحفوظة: '+S.saved.length+'<br>تعود الكلمة بعد يوم ثم يومين ثم 4 و8 و16 يومًا كلما عرفتها.</div><div class="btns"><button class="btn" id="rall">راجع كل الكلمات</button></div>';
+    $('rall').addEventListener('click',function(){startCards(true)});return;
+  }
+  var w=CD.list[CD.i];
+  box.innerHTML='<div class="tg">'+(CD.i+1)+' / '+CD.list.length+(CD.all?'':' • مراجعة مجدولة')+'</div><div class="card" id="cd"><div class="qw"></div><div class="bk" style="display:none"><div class="big"></div><div class="e1"></div><div class="e2"></div><div class="st nt"></div></div></div><div class="btns" id="rt" style="display:none;margin-top:10px"><button class="btn s" id="no">✗ لم أعرفها</button><button class="btn" id="yes">✓ عرفتها</button></div><div class="st">اضغط البطاقة لقلبها</div>';
+  box.querySelector('.qw').textContent=w.de;
+  box.querySelector('.big').textContent=w.ar;
+  box.querySelector('.e1').textContent=w.ex_de||'';
+  box.querySelector('.e2').textContent=w.ex_ar||'';
+  box.querySelector('.nt').textContent=S.notes[key(w)]?'💡 '+S.notes[key(w)]:'';
+  if(S.auto)speak(w.de);
+  $('cd').addEventListener('click',function(){box.querySelector('.bk').style.display='block';$('rt').style.display='flex';speak(w.ex_de||w.de)});
+  function rate(ok){
+    var k=key(w),r=SRS[k]||{box:0};
+    act();if(ok){r.box=Math.min(5,r.box+1);r.due=Date.now()+DAYS[r.box]*864e5}
+    else{r.box=0;r.due=Date.now()+6e5;CD.list.push(w);logMiss(w)}
+    SRS[k]=r;sv('n-srs',SRS);CD.i++;showCard();
+  }
+  $('yes').addEventListener('click',function(){rate(true)});
+  $('no').addEventListener('click',function(){rate(false)});
+}
+
+/* ---------- conjugation ---------- */
+async function conj(){
+  var t=$('cq').value.trim();if(!t)return;
+  busy($('cst2'),'جاري إعداد الجدول...');$('cout').innerHTML='';
+  try{
+    var s=await getS();
+    var r=await s.json('أنت خبير نحو ألماني. أعد JSON فقط بدون شرح وبدون ```، كائنًا بالشكل: {"inf":"المصدر الألماني","ar":"المعنى العربي","aux":"haben أو sein","p2":"Partizip II","praes":["ich ..","du ..","er/sie/es ..","wir ..","ihr ..","sie/Sie .."],"prat":["ich ..","du ..","er/sie/es ..","wir ..","ihr ..","sie/Sie .."],"imp":["للمفرد du","لـ ihr","لـ Sie"],"note":"ملاحظة عربية قصيرة: فعل قوي أو ضعيف أو منفصل أو انعكاسي"}. الفعل المطلوب: "'+t+'" (قد يكون بالعربية أو الألمانية أو بصيغة مصرّفة، فاستخرج المصدر).',{modelTier:'default',cache:false});
+    var rows='';for(var i=0;i<6;i++)rows+='<tr><td>'+esc((r.praes||[])[i])+'</td><td>'+esc((r.prat||[])[i])+'</td></tr>';
+    $('cout').innerHTML='<div class="box"><div class="de" style="font-size:1.3em">'+esc(r.inf)+' <button class="ic" id="cs">🔊</button></div><div>'+esc(r.ar)+'</div><div class="st">'+esc(r.note)+'</div></div><div class="box" style="padding:0;overflow:hidden"><table class="ct"><tr><th>Präsens</th><th>Präteritum</th></tr>'+rows+'</table></div><div class="box"><div class="e1">Perfekt: '+esc(r.aux)+' + '+esc(r.p2)+'</div><div class="e1">Imperativ: '+esc((r.imp||[]).join(' / '))+'</div></div>';
+    $('cs').addEventListener('click',function(){speak(r.inf)});
+    $('cst2').textContent='';
+  }catch(e){fail($('cst2'),e)}
+}
+$('cgo').addEventListener('click',conj);
+$('cq').addEventListener('keydown',function(e){if(e.key==='Enter')conj()});
+
+/* ---------- PDF export (pages drawn on canvas, packed as PDF) ---------- */
+function wrapT(ctx,t,mw){var ws=String(t||'').split(' '),ls=[],c='';ws.forEach(function(w){var n=c?c+' '+w:w;if(ctx.measureText(n).width>mw&&c){ls.push(c);c=w}else c=n});if(c)ls.push(c);return ls}
+function drawPage(list,start,total,pn){
+  var W=1240,H=1754,per=11,ac=S.sx==='m'?'#1c6dd0':'#d6336c',F='system-ui,"Segoe UI",Tahoma,sans-serif';
+  var c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);x.textBaseline='middle';
+  x.direction='ltr';x.textAlign='center';x.fillStyle=ac;x.font='bold 56px '+F;x.fillText('Deutsch – Arabisch',W/2,70);
+  x.font='28px '+F;x.fillStyle='#555';x.fillText('Nadra • Wichtige Wörter mit Beispielen',W/2,125);
+  var cols=[[50,280],[330,200],[530,400],[930,260]],hy=170,hh=60,rh=(H-hy-hh-110)/per;
+  x.fillStyle=ac;x.fillRect(50,hy,1140,hh);x.fillStyle='#fff';x.font='bold 30px '+F;x.textAlign='center';
+  ['Deutsch','العربية','Beispiel','الترجمة'].forEach(function(h,i){x.fillText(h,cols[i][0]+cols[i][1]/2,hy+hh/2)});
+  for(var k=0;k<per&&start+k<list.length;k++){
+    var w=list[start+k],y=hy+hh+k*rh;
+    if(k%2){x.fillStyle='#faf6f8';x.fillRect(50,y,1140,rh)}
+    x.fillStyle='#e6e6e6';x.fillRect(50,y+rh-1,1140,1);
+    x.textAlign='left';x.direction='ltr';x.font='bold 30px '+F;x.fillStyle='#c0392b';
+    wrapT(x,(start+k+1)+'. '+w.de,cols[0][1]-20).slice(0,2).forEach(function(l,j,a){x.fillText(l,cols[0][0]+10,y+rh/2+(j-(a.length-1)/2)*36)});
+    x.font='26px '+F;x.fillStyle='#222';
+    wrapT(x,w.ex_de,cols[2][1]-20).slice(0,3).forEach(function(l,j,a){x.fillText(l,cols[2][0]+10,y+rh/2+(j-(a.length-1)/2)*32)});
+    x.direction='rtl';x.textAlign='right';x.font='bold 30px '+F;x.fillStyle=ac;
+    wrapT(x,w.ar,cols[1][1]-20).slice(0,2).forEach(function(l,j,a){x.fillText(l,cols[1][0]+cols[1][1]-10,y+rh/2+(j-(a.length-1)/2)*36)});
+    x.font='26px '+F;x.fillStyle='#333';
+    wrapT(x,w.ex_ar,cols[3][1]-20).slice(0,3).forEach(function(l,j,a){x.fillText(l,cols[3][0]+cols[3][1]-10,y+rh/2+(j-(a.length-1)/2)*32)});
+  }
+  x.direction='ltr';x.textAlign='center';x.fillStyle=ac;x.font='28px '+F;x.fillText('Viel Erfolg beim Lernen!   •   '+pn+' / '+total,W/2,H-55);
+  var b=atob(c.toDataURL('image/jpeg',0.88).split(',')[1]),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);
+  return {u8:u,w:W,h:H};
+}
+function buildPdf(jp){
+  var enc=new TextEncoder(),parts=[],len=0,off=[];
+  function add(v){var b=typeof v==='string'?enc.encode(v):v;parts.push(b);len+=b.length}
+  function o(n){off[n]=len;add(n+' 0 obj\n')}
+  var N=jp.length,kids=[];for(var i=0;i<N;i++)kids.push((3+i*3)+' 0 R');
+  add('%PDF-1.4\n');
+  o(1);add('<</Type/Catalog/Pages 2 0 R>>\nendobj\n');
+  o(2);add('<</Type/Pages/Kids['+kids.join(' ')+']/Count '+N+'>>\nendobj\n');
+  jp.forEach(function(p,i){
+    var pg=3+i*3,ct=pg+1,im=pg+2,cs='q 595 0 0 842 0 0 cm /Im0 Do Q';
+    o(pg);add('<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]/Resources<</XObject<</Im0 '+im+' 0 R>>>>/Contents '+ct+' 0 R>>\nendobj\n');
+    o(ct);add('<</Length '+cs.length+'>>\nstream\n'+cs+'\nendstream\nendobj\n');
+    o(im);add('<</Type/XObject/Subtype/Image/Width '+p.w+'/Height '+p.h+'/ColorSpace/DeviceRGB/BitsPerComponent 8/Filter/DCTDecode/Length '+p.u8.length+'>>\nstream\n');add(p.u8);add('\nendstream\nendobj\n');
+  });
+  var xr=len,tot=3+N*3;
+  add('xref\n0 '+tot+'\n0000000000 65535 f \n');
+  for(var k=1;k<tot;k++)add(('0000000000'+off[k]).slice(-10)+' 00000 n \n');
+  add('trailer\n<</Size '+tot+'/Root 1 0 R>>\nstartxref\n'+xr+'\n%%EOF');
+  return new Blob(parts,{type:'application/pdf'});
+}
+$('pdfb').addEventListener('click',async function(){
+  if(!savedView().length){$('sst').textContent='احفظ بعض الكلمات أولًا (☆) ثم صدّرها.';return}
+  busy($('sst'),'جاري إنشاء الـ PDF...');
+  try{
+    var total=Math.ceil(savedView().length/11),jp=[];
+    for(var p=0;p<total;p++)jp.push(drawPage(savedView(),p*11,total,p+1));
+    var blob=buildPdf(jp);
+    var d=await claude.use('downloads');if(!d)throw new Error('التنزيل غير متاح هنا');
+    await d.save({filename:'nadra-words.pdf',data:blob});$('sst').textContent='تم إنشاء الـ PDF ✓';
+  }catch(e){$('sst').textContent='تعذر إنشاء/تنزيل الـ PDF: '+((e&&(e.message||e.code))||e)}
+});
+
+/* ---------- saved tools ---------- */
+$('sq').addEventListener('input',renderSaved);
+var armed=null;
+function twoTap(btn,label,fn){
+  btn.addEventListener('click',function(){
+    if(armed===btn){armed=null;btn.textContent=label;fn();return}
+    armed=btn;btn.textContent='اضغط مرة أخرى للتأكيد';
+    setTimeout(function(){if(armed===btn){armed=null;btn.textContent=label}},3000);
+  });
+}
+twoTap($('sclr'),'🗑️ مسح الكل',function(){S.saved=[];sv('n-saved',S.saved);renderSaved();cnt()});
+twoTap($('hclr'),'🗑️ مسح السجل',function(){S.hist=[];sv('n-hist',S.hist);renderHist();cnt()});
+$('exp').addEventListener('click',async function(){
+  if(!savedView().length){$('sst').textContent='لا توجد كلمات للتصدير.';return}
+  function c(x){return '"'+String(x||'').replace(/"/g,'""')+'"'}
+  var csv='\uFEFF'+['Deutsch','العربية','Beispiel','المثال'].map(c).join(',')+'\n'+savedView().map(function(w){return [w.de,w.ar,w.ex_de,w.ex_ar].map(c).join(',')}).join('\n');
+  try{var d=await claude.use('downloads');if(!d)throw 0;await d.save({filename:'nadra-words.csv',data:csv});$('sst').textContent='تم الحفظ ✓'}
+  catch(e){copy(csv);$('sst').textContent='تعذر التنزيل هنا، فتم نسخ القائمة إلى الحافظة.'}
+});
+
+/* ---------- settings / theme / nav ---------- */
+function cnt(){$('cnt').textContent=S.saved.length+' / '+S.hist.length}
+function applyDir(){
+  $('dirb').textContent=S.dir==='de'?'🇩🇪 ألماني  ➜  عربي 🇪🇬':'🇪🇬 عربي  ➜  ألماني 🇩🇪';
+  $('q').placeholder=S.dir==='de'?'ادخل النص (ألماني)...':'ادخل النص (عربي)...';
+}
+$('dirb').addEventListener('click',function(){S.dir=S.dir==='de'?'ar':'de';sv('n-dir',S.dir);applyDir()});
+function sx(k){S.sx=k;sv('n-sx',k);root.setAttribute('data-sx',k);$('thb').textContent=k==='f'?'🌸':'🌙';$('sf').style.outline=k==='f'?'2px solid var(--ac)':'';$('sm').style.outline=k==='m'?'2px solid var(--ac)':''}
+$('thb').addEventListener('click',function(){sx(S.sx==='f'?'m':'f')});
+$('sf').addEventListener('click',function(){sx('f')});$('sm').addEventListener('click',function(){sx('m')});
+function zoom(v){S.fz=+v;sv('n-fz',S.fz);root.style.setProperty('--z',S.fz/100)}
+$('fz').addEventListener('input',function(){zoom($('fz').value)});
+$('auto').addEventListener('change',function(){S.auto=$('auto').checked;sv('n-auto',S.auto)});
+function go(n){
+  document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.id==='v-'+n)});
+  var hl=TOOLV.indexOf(n)>-1?'home':n;
+  document.querySelectorAll('.bn button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-go')===hl)});
+  if(n==='pron'&&!PW)pnext();
+  if(n==='art'&&!AG.cur)artNext();
+  if(n==='dict'&&!DK)dkNext();
+  if(n!=='cam')closeCam();
+  if(n==='saved')renderSaved();
+  if(n==='practice')startMode();
+  if(n==='set')cnt();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-go'))})});
+
+
+/* ---------- sentence correction ---------- */
+$('fxgo').addEventListener('click',async function(){
+  var t=$('fxt').value.trim();if(!t)return;
+  busy($('fxs'),'جاري التصحيح...');$('fxo').innerHTML='';
+  try{
+    var sm=await getS();
+    var r=await sm.json('أنت معلم ألماني للناطقين بالعربية. افحص النص الألماني التالي وأعد JSON فقط بدون ```: {"ok":true أو false,"fixed":"النص الصحيح كاملًا","ar":"ترجمة النص الصحيح للعربية","errors":[{"wrong":"الجزء الخاطئ","right":"الصحيح","why":"شرح مختصر بالعربية للقاعدة"}]}. إن كان النص صحيحًا فأعد ok=true و errors فارغة. النص: "'+t+'"',{modelTier:'default',cache:false});
+    var h='<div class="box"><div class="tg">'+(r.ok?'✅ الجملة صحيحة':'✏️ النص بعد التصحيح')+'</div><div class="e1" style="font-size:1.1em">'+esc(r.fixed)+' <button class="ic" id="fxsp">🔊</button></div><div class="e2">'+esc(r.ar)+'</div></div>';
+    (r.errors||[]).forEach(function(e){h+='<div class="fx"><span dir="ltr"><s>'+esc(e.wrong)+'</s> → <b>'+esc(e.right)+'</b></span><div class="st">'+esc(e.why)+'</div></div>'});
+    $('fxo').innerHTML=h;$('fxs').textContent='';
+    $('fxsp').addEventListener('click',function(){speak(r.fixed)});act();
+  }catch(e){fail($('fxs'),e)}
+});
+
+/* ---------- conversation practice ---------- */
+var CH={msgs:[]},SC=['عند الطبيب','في السوبرماركت','مقابلة عمل','في المطعم','حجز موعد','مع الجيران'];
+SC.forEach(function(n){var b=document.createElement('button');b.className='chip';b.textContent=n;b.addEventListener('click',function(){startChat(n)});$('scn').appendChild(b)});
+function startChat(n){
+  $('clog').innerHTML='';
+  CH.msgs=[{role:'user',content:'أنت شريك محادثة ألماني لمتعلم عربي مستواه A2-B1. الموقف: '+n+'. تحدّث بجمل قصيرة وبسيطة وانتهِ بسؤال. في كل ردودك أعد JSON فقط بدون ```: {"de":"ردك بالألمانية","ar":"ترجمته بالعربية","fix":"إن كانت آخر رسالة للمتعلم فيها أخطاء فاكتب تصحيحها مع شرح قصير بالعربية، وإلا اتركه فارغًا"}. ابدأ أنت بجملة ترحيب مناسبة للموقف.'}];
+  chatSend('',true);
+}
+async function chatSend(text,first){
+  if(!CH.msgs.length){$('cs3').textContent='اختر موقفًا أولًا من الأزرار أعلاه.';return}
+  var log=$('clog'),me=null,sm;
+  try{sm=await getS()}catch(e){fail($('cs3'),e);return}
+  if(!first){me=document.createElement('div');me.className='bub me';me.textContent=text;log.appendChild(me);CH.msgs.push({role:'user',content:text})}
+  busy($('cs3'),'...');
+  try{
+    var r=await sm.json(CH.msgs,{modelTier:'quick',cache:false});
+    CH.msgs.push({role:'assistant',content:JSON.stringify(r)});
+    $('cs3').textContent='';
+    if(me&&r.fix){var f=document.createElement('div');f.className='f';f.textContent='✏️ '+r.fix;me.appendChild(f)}
+    var a=document.createElement('div');a.className='bub ai';
+    a.innerHTML='<div class="d"></div><div class="a"></div><button class="ic" aria-label="نطق">🔊</button>';
+    a.querySelector('.d').textContent=r.de;a.querySelector('.a').textContent=r.ar;
+    a.querySelector('button').addEventListener('click',function(){speak(r.de)});
+    log.appendChild(a);a.scrollIntoView({block:'nearest'});speak(r.de);act();
+  }catch(e){fail($('cs3'),e)}
+}
+function chatGo(){var t=$('cin').value.trim();if(!t)return;$('cin').value='';chatSend(t,false)}
+$('csend').addEventListener('click',chatGo);
+$('cin').addEventListener('keydown',function(e){if(e.key==='Enter')chatGo()});
+$('cmic').addEventListener('click',function(){
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!R){$('cs3').textContent='الإدخال الصوتي غير مدعوم هنا.';return}
+  try{var r=new R();r.lang='de-DE';r.onresult=function(e){$('cin').value=e.results[0][0].transcript;chatGo()};r.onerror=function(e){$('cs3').textContent='تعذر الإدخال الصوتي ('+e.error+')'};$('cs3').textContent='🎤 تحدّث بالألمانية...';r.start()}catch(x){}
+});
+
+/* ---------- pronunciation ---------- */
+var PW=null;
+function setP(w){PW=w;$('pw').textContent=w.de;$('pa').textContent=w.ar||'';$('psc').textContent='';$('pst').textContent=''}
+function pnext(){var p=pool();setP(p[Math.floor(Math.random()*p.length)])}
+function norm(t){return String(t).toLowerCase().replace(/[^a-zäöüß0-9 ]/g,'').replace(/\s+/g,' ').trim()}
+function lev(a,b){var m=[],i,j;for(i=0;i<=a.length;i++)m[i]=[i];for(j=0;j<=b.length;j++)m[0][j]=j;for(i=1;i<=a.length;i++)for(j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return m[a.length][b.length]}
+$('plis').addEventListener('click',function(){if(PW)speak(PW.de)});
+$('pnext').addEventListener('click',pnext);
+$('pin').addEventListener('keydown',function(e){if(e.key==='Enter'&&$('pin').value.trim()){setP({de:$('pin').value.trim(),ar:''});$('pin').value=''}});
+$('prec').addEventListener('click',function(){
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!R){$('pst').textContent='التعرف على الصوت غير مدعوم هنا. جرّب متصفح Chrome.';return}
+  if(!PW)pnext();
+  try{
+    var r=new R();r.lang='de-DE';
+    r.onresult=function(e){
+      var h=e.results[0][0].transcript,a=norm(PW.de),b=norm(h),sc=Math.max(0,Math.round(100*(1-lev(a,b)/Math.max(a.length,b.length,1))));
+      $('psc').textContent=sc+'%';$('psc').style.color=sc>=80?'var(--ok)':sc>=50?'#e8a317':'var(--no)';
+      act();$('pst').textContent='سمعتُ: «'+h+'» — '+(sc>=80?'ممتاز! 👏':sc>=50?'جيد، حاول مرة أخرى':'أعد المحاولة بتمهّل');
+    };
+    r.onerror=function(e){$('pst').textContent='تعذر التعرف على الصوت ('+e.error+')'};
+    $('pst').textContent='🎤 انطق الآن...';r.start();
+  }catch(x){$('pst').textContent='تعذر تشغيل الميكروفون.'}
+});
+
+/* ---------- backup / restore / clear ---------- */
+function bkdata(){return JSON.stringify({app:'nadra',v:1,saved:S.saved,hist:S.hist,srs:SRS,notes:S.notes,sx:S.sx,fz:S.fz,auto:S.auto,dir:S.dir})}
+$('bkx').addEventListener('click',async function(){
+  var j=bkdata();$('bkbox').style.display='block';$('bkt').value=j;
+  try{var d=await claude.use('downloads');if(!d)throw 0;await d.save({filename:'nadra-backup.json',data:j});$('bks').textContent='تم حفظ الملف ✓ (والنص ظاهر أيضًا للنسخ)'}
+  catch(e){copy(j);$('bks').textContent='تم نسخ النسخة الاحتياطية إلى الحافظة وهي ظاهرة أعلاه. احفظها في ملاحظاتك.'}
+});
+$('bki').addEventListener('click',function(){$('bkbox').style.display='block';$('bkt').value='';$('bks').textContent='الصق النص ثم اضغط تأكيد الاستعادة.'});
+$('bkok').addEventListener('click',function(){
+  try{
+    var d=JSON.parse($('bkt').value);if(d.app!=='nadra'||!Array.isArray(d.saved))throw new Error('x');
+    S.saved=d.saved;S.hist=d.hist||[];SRS=d.srs||{};S.notes=d.notes||{};sv('n-notes',S.notes);sv('n-saved',S.saved);sv('n-hist',S.hist);sv('n-srs',SRS);
+    if(d.sx)sx(d.sx);if(d.fz){zoom(d.fz);$('fz').value=d.fz}
+    renderHist();renderSaved();cnt();$('bks').textContent='تمت الاستعادة ✓ ('+S.saved.length+' كلمة)';
+  }catch(e){$('bks').textContent='النص غير صالح.'}
+});
+twoTap($('sclr2'),'حذف',function(){S.saved=[];sv('n-saved',S.saved);renderSaved();cnt()});
+twoTap($('hclr2'),'حذف',function(){S.hist=[];sv('n-hist',S.hist);renderHist();cnt()});
+
+
+/* ===== stats, streak, mistakes ===== */
+var TOOLV=['practice','conj','fix','chat','pron','read','lists','gram','art','dict','write','doc'];
+function dayk(d){var t=new Date(d||Date.now());return t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()}
+function act(n){var k=dayk();S.stats[k]=(S.stats[k]||0)+(n||1);sv('n-stats',S.stats);renderStats()}
+function streak(){var n=0,d=Date.now();if(!S.stats[dayk(d)])d-=864e5;while(S.stats[dayk(d)]){n++;d-=864e5}return n}
+function renderStats(){
+  var b=$('stats');if(!b)return;
+  var t=S.stats[dayk()]||0,g=S.goal,pc=Math.min(100,Math.round(100*t/g)),bars='';
+  for(var i=6;i>=0;i--){var c=S.stats[dayk(Date.now()-i*864e5)]||0;bars+='<i style="height:'+Math.max(4,Math.min(40,c*3))+'px"></i>'}
+  var ms=S.saved.filter(function(w){var r=SRS[key(w)];return r&&r.box>=4}).length;
+  b.innerHTML='<div class="sr"><div class="sf">🔥<b>'+streak()+'</b><small>يوم متتالٍ</small></div><div class="sm"><div class="pbar"><span style="width:'+pc+'%"></span></div><small>اليوم: '+t+' / '+g+' نشاط'+(t>=g?' ✅':'')+'</small><small>⭐ '+S.saved.length+' محفوظة • 🏆 '+ms+' متقنة • 📕 '+mistList().length+' أخطاء</small></div><div class="wk">'+bars+'</div></div>';
+}
+function logMiss(w){var k=key(w),m=S.mist[k]||{w:{de:w.de,ar:w.ar,ex_de:w.ex_de||'',ex_ar:w.ex_ar||''},n:0};m.n=Math.min(3,m.n+2);S.mist[k]=m;sv('n-mist',S.mist)}
+function okMiss(w){var k=key(w),m=S.mist[k];if(!m)return;m.n--;if(m.n<=0)delete S.mist[k];sv('n-mist',S.mist)}
+function mistList(){return Object.keys(S.mist).map(function(k){return S.mist[k].w})}
+$('goal').value=S.goal;$('gv').textContent=S.goal;
+$('goal').addEventListener('input',function(){S.goal=+$('goal').value;sv('n-goal',S.goal);$('gv').textContent=S.goal;renderStats()});
+
+/* ===== interactive reader ===== */
+var RC={};
+$('rdgo').addEventListener('click',function(){
+  var t=$('rdt').value.trim();if(!t)return;
+  var o=$('rdo');o.innerHTML='';o.style.display='block';$('rdi').innerHTML='';
+  t.split(/(?<=[.!?])\s+/).forEach(function(sn){
+    var re=/[A-Za-zÄÖÜäöüß]+/g,last=0,m,sp=document.createElement('span');
+    while((m=re.exec(sn))){
+      if(m.index>last)sp.appendChild(document.createTextNode(sn.slice(last,m.index)));
+      var w=document.createElement('span');w.className='wd';w.textContent=m[0];
+      (function(word,el){el.addEventListener('click',function(){rdTap(word,sn,el)})})(m[0],w);
+      sp.appendChild(w);last=m.index+m[0].length;
+    }
+    if(last<sn.length)sp.appendChild(document.createTextNode(sn.slice(last)));
+    sp.appendChild(document.createTextNode(' '));o.appendChild(sp);
+  });
+});
+async function rdTap(word,sn,el){
+  document.querySelectorAll('.wd.on').forEach(function(x){x.classList.remove('on')});el.classList.add('on');
+  var k=word.toLowerCase()+'|'+sn.slice(0,40),box=$('rdi');
+  if(S.auto)speak(word);
+  try{
+    var r=RC[k];
+    if(!r){busy(box,'...');var sm=await getS();var a=await sm.json(SYS+'الكلمة "'+word+'" وردت في الجملة: "'+sn+'". أعد عنصرًا واحدًا فقط: de = الشكل الأساسي (المصدر للأفعال، والاسم بمقاله)، ar = المعنى المناسب لهذا السياق، ex_de/ex_ar = الجملة الأصلية وترجمتها.',{modelTier:'quick'});r=RC[k]=Array.isArray(a)?a[0]:a}
+    box.innerHTML='';var row=mkRow(r);row.classList.add('open');box.appendChild(row);act();
+  }catch(e){fail(box,e)}
+}
+$('rdtr').addEventListener('click',async function(){
+  var t=$('rdt').value.trim();if(!t)return;var b=$('rdfull');b.style.display='block';busy(b,'جاري الترجمة...');
+  try{var sm=await getS();var r=await sm('ترجم النص الألماني التالي إلى العربية فقط بدون شرح:\n\n'+t,{modelTier:'default',cache:false});b.textContent=(r.text||'').trim();act()}catch(e){fail(b,e)}
+});
+
+/* ===== vocabulary lists ===== */
+var LV='A1',LL=[];
+['A1','A2','B1','B2'].forEach(function(l){var b=document.createElement('button');b.className='chip'+(l===LV?' on':'');b.textContent=l;b.addEventListener('click',function(){LV=l;[].forEach.call($('lvb').children,function(x){x.classList.toggle('on',x===b)})});$('lvb').appendChild(b)});
+['الأسرة','الطعام','السفر','العمل','الصحة','البيت','التسوق','المدينة','الدراسة'].forEach(function(t){var b=document.createElement('button');b.className='chip';b.textContent=t;b.addEventListener('click',function(){$('lti').value=t});$('tpb').appendChild(b)});
+$('lgo').addEventListener('click',async function(){
+  var tp=$('lti').value.trim()||'مفردات يومية عامة';busy($('lst'),'جاري إعداد القائمة...');$('lres').innerHTML='';$('ladd').style.display='none';
+  try{
+    var sm=await getS();
+    var r=await sm.json(SYS+'أعطني 15 كلمة ألمانية أساسية لمستوى '+LV+' (إطار CEFR) في موضوع: "'+tp+'"، من الأسهل إلى الأصعب، مع مثال بسيط لكل كلمة.',{modelTier:'default'});
+    LL=renderList($('lres'),$('lst'),r).map(function(w){w.tag=tp;return w});
+    if(LL.length){$('ladd').style.display='block';act()}
+  }catch(e){fail($('lst'),e)}
+});
+$('ladd').addEventListener('click',function(){
+  var n=0;LL.forEach(function(w){if(!isSaved(w)){S.saved.unshift({de:w.de,ar:w.ar,ex_de:w.ex_de||'',ex_ar:w.ex_ar||'',tag:w.tag});n++}});
+  sv('n-saved',S.saved);renderList($('lres'),$('lst'),LL);renderSaved();renderStats();
+  $('lst').textContent='تمت إضافة '+n+' كلمة إلى مجلد «'+LL[0].tag+'» ✓';
+});
+
+/* ===== grammar guide ===== */
+['Akkusativ','Dativ','Genitiv','ترتيب الجملة','أحرف الجر','Perfekt','Modalverben','Adjektivendungen','Nebensätze','Passiv'].forEach(function(t){var b=document.createElement('button');b.className='chip';b.textContent=t;b.addEventListener('click',function(){$('gti').value=t;$('ggo').click()});$('gtb').appendChild(b)});
+$('ggo').addEventListener('click',async function(){
+  var t=$('gti').value.trim();if(!t)return;busy($('gst'),'جاري الشرح...');$('gout').innerHTML='';
+  try{
+    var sm=await getS();
+    var r=await sm.json('اشرح بالعربية قاعدة الألمانية التالية لمتعلم مبتدئ-متوسط: "'+t+'". أعد JSON فقط بدون ```: {"title":"عنوان","points":["شرح مبسّط بالعربية، من 4 إلى 6 نقاط"],"examples":[{"de":"","ar":""}],"quiz":[{"q":"جملة ألمانية فيها فراغ ___","opts":["","",""],"ans":0,"why":"سبب بالعربية"}]} مع 4 أمثلة و3 أسئلة (ans رقم الجواب الصحيح بدءًا من 0).',{modelTier:'default'});
+    var h='<div class="box"><div class="de" style="font-size:1.2em">'+esc(r.title)+'</div>'+(r.points||[]).map(function(p){return '<div style="margin-top:6px">• '+esc(p)+'</div>'}).join('')+'</div><div class="box">'+(r.examples||[]).map(function(e){return '<div class="e1">'+esc(e.de)+'</div><div class="e2" style="margin-bottom:8px">'+esc(e.ar)+'</div>'}).join('')+'</div><div class="h2">اختبر نفسك</div><div id="gq"></div>';
+    $('gout').innerHTML=h;$('gst').textContent='';
+    (r.quiz||[]).forEach(function(q){
+      var bx=document.createElement('div');bx.className='box';bx.innerHTML='<div class="e1" style="margin-bottom:8px"></div>';bx.firstChild.textContent=q.q;
+      (q.opts||[]).forEach(function(o,i){var b=document.createElement('button');b.className='opt';b.style.direction='ltr';b.textContent=o;b.addEventListener('click',function(){
+        bx.querySelectorAll('.opt').forEach(function(x,j){x.disabled=true;if(j===q.ans)x.classList.add('ok')});
+        if(i!==q.ans)b.classList.add('no');act();
+        var w=document.createElement('div');w.className='st';w.textContent=q.why||'';bx.appendChild(w);
+      });bx.appendChild(b)});
+      $('gq').appendChild(bx);
+    });
+    act();
+  }catch(e){fail($('gst'),e)}
+});
+
+/* ===== articles & plurals game ===== */
+var AG={cur:null,sc:0,n:0};
+function artPool(){
+  var p=NOUNS.map(function(a){return {art:a[0],w:a[1],pl:a[2],ar:a[3]}});
+  S.saved.concat(BANK).forEach(function(w){var m=/^(der|die|das)\s+(.+)$/i.exec(w.de);if(m)p.push({art:m[1].toLowerCase(),w:m[2],pl:'',ar:w.ar})});
+  return p;
+}
+function artNext(){
+  var p=artPool(),c=p[Math.floor(Math.random()*p.length)];AG.cur=c;var b=$('agbox');
+  b.innerHTML='<div class="tg">'+AG.sc+' / '+AG.n+'</div><div class="qw"></div><div style="text-align:center;color:var(--mu)">'+esc(c.ar)+'</div><div class="btns" id="agb" style="margin-top:12px"></div><div id="agp"></div>';
+  b.querySelector('.qw').textContent=c.w;
+  ['der','die','das'].forEach(function(a){var x=document.createElement('button');x.className='btn s';x.textContent=a;x.addEventListener('click',function(){artAns(a)});$('agb').appendChild(x)});
+}
+function nextBtn(box,fn){box.insertAdjacentHTML('beforeend','<div class="btns" style="margin-top:8px"><button class="btn" id="nxb">التالي ➜</button></div>');$('nxb').addEventListener('click',fn)}
+function artAns(a){
+  var c=AG.cur,ok=a===c.art;AG.n++;if(ok)AG.sc++;else logMiss({de:c.art+' '+c.w,ar:c.ar});act();
+  $('agb').innerHTML='<div class="big" style="width:100%;color:var(--'+(ok?'ok':'no')+')">'+(ok?'✓ صحيح: ':'✗ الصحيح: ')+esc(c.art+' '+c.w)+'</div>';
+  speak(c.art+' '+c.w);
+  var p=$('agp');
+  if(!c.pl){nextBtn(p,artNext);return}
+  p.innerHTML='<div class="tg">اكتب الجمع (Plural)</div><input id="pli" class="tgi" style="width:100%" dir="ltr"><div class="btns" style="margin-top:8px"><button class="btn" id="plok">تحقق</button></div>';
+  $('plok').addEventListener('click',function(){
+    var v=$('pli').value.trim().toLowerCase().replace(/^die\s+/,''),good=v===c.pl.toLowerCase();
+    if(!good)logMiss({de:'die '+c.pl+' (Plural von '+c.w+')',ar:'جمع '+c.ar});
+    p.innerHTML='<div class="big" style="color:var(--'+(good?'ok':'no')+')">'+(good?'✓ ':'✗ ')+'die '+esc(c.pl)+'</div>';nextBtn(p,artNext);
+  });
+}
+
+/* ===== dictation ===== */
+var DK=null;
+function dkNext(){var p=pool(),w=p[Math.floor(Math.random()*p.length)];DK={w:w,t:w.ex_de||w.de};$('dki').value='';$('dkr').innerHTML='';dkPlay()}
+function dkPlay(){if(!DK)return;try{var u=new SpeechSynthesisUtterance(DK.t);u.lang='de-DE';u.rate=$('dks').checked?0.6:0.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(x){}}
+$('dkp').addEventListener('click',dkPlay);$('dkn').addEventListener('click',dkNext);
+$('dkc').addEventListener('click',function(){
+  if(!DK)return;
+  var a=norm(DK.t),b=norm($('dki').value),words=b.split(' '),sc=Math.max(0,Math.round(100*(1-lev(a,b)/Math.max(a.length,b.length,1))));
+  var h=DK.t.split(' ').map(function(w){return '<span style="color:var(--'+(words.indexOf(norm(w))>-1?'ok':'no')+')">'+esc(w)+'</span>'}).join(' ');
+  $('dkr').innerHTML='<div class="score" style="color:var(--'+(sc>=90?'ok':'no')+')">'+sc+'%</div><div class="e1">'+h+'</div><div class="e2">'+esc(DK.w.ex_ar||DK.w.ar)+'</div>';
+  if(sc<100)logMiss(DK.w);else okMiss(DK.w);act();
+});
+
+/* ===== letter writing assistant ===== */
+function wrShow(r,model){
+  var h='';
+  if(model)h+='<div class="box"><div class="tg">Musterbrief</div><div class="e1" style="white-space:pre-wrap">'+esc(r.de)+'</div><div class="e2" style="white-space:pre-wrap">'+esc(r.ar)+'</div><button class="ic" id="wsp">🔊</button></div>';
+  else h+='<div class="box"><div class="score">'+esc(r.score)+'</div><div style="text-align:center">المستوى التقديري: <b>'+esc(r.level)+'</b></div></div><div class="box"><div class="tg">النص بعد التصحيح</div><div class="e1" style="white-space:pre-wrap">'+esc(r.fixed)+'</div><button class="ic" id="wsp">🔊</button></div>';
+  var cm=r.comments||r.tips||[];
+  if(cm.length)h+='<div class="fx">'+cm.map(function(c){return '<div>• '+esc(c)+'</div>'}).join('')+'</div>';
+  if((r.phrases||[]).length)h+='<div class="h2">عبارات مفيدة للامتحان</div>'+r.phrases.map(function(p){return '<div class="box"><div class="e1">'+esc(p.de)+'</div><div class="e2">'+esc(p.ar)+'</div></div>'}).join('');
+  $('wo').innerHTML=h;$('wst').textContent='';
+  $('wsp').addEventListener('click',function(){speak(model?r.de:r.fixed)});
+}
+async function wrGo(model){
+  var ty=$('wty').value,lv=$('wlv').value,tp=$('wtp').value.trim(),tx=$('wtx').value.trim();
+  if(!model&&!tx){$('wst').textContent='اكتب رسالتك أولًا.';return}
+  busy($('wst'),'جاري العمل...');$('wo').innerHTML='';
+  try{
+    var sm=await getS(),p=model
+      ?'اكتب رسالة نموذجية بالألمانية لمستوى '+lv+' (نمط امتحان Goethe/telc). النوع: '+ty+'. الموضوع: '+(tp||'حرّ')+'. أعد JSON فقط بدون ```: {"de":"الرسالة كاملة","ar":"ترجمتها","tips":["نصائح بالعربية لبنية الرسالة"],"phrases":[{"de":"عبارة مفيدة","ar":"ترجمتها"}]}'
+      :'أنت مصحّح امتحانات الكتابة الألمانية (Goethe/telc) لمستوى '+lv+'. نوع الرسالة: '+ty+'. المهمة: '+(tp||'غير محددة')+'. قيّم رسالة المتعلم وأعد JSON فقط بدون ```: {"score":"س/20","level":"المستوى التقديري","fixed":"الرسالة بعد التصحيح","comments":["ملاحظات بالعربية: أخطاء شائعة، بنية الرسالة، مفردات"],"phrases":[{"de":"عبارة مفيدة للامتحان","ar":"ترجمتها"}]}. الرسالة:\n'+tx;
+    wrShow(await sm.json(p,{modelTier:'default',cache:false}),model);act(3);
+  }catch(e){fail($('wst'),e)}
+}
+$('wev').addEventListener('click',function(){wrGo(false)});$('wmd').addEventListener('click',function(){wrGo(true)});
+
+/* ===== share word card, Anki ===== */
+function cardBlob(w){
+  return new Promise(function(res){
+    var c=document.createElement('canvas');c.width=1080;c.height=1080;var x=c.getContext('2d'),m=S.sx==='m',F='system-ui,"Segoe UI",Tahoma,sans-serif';
+    var g=x.createLinearGradient(0,0,1080,1080);g.addColorStop(0,m?'#0f2c52':'#ff8fb8');g.addColorStop(1,m?'#1c8fa8':'#b565e6');x.fillStyle=g;x.fillRect(0,0,1080,1080);
+    x.fillStyle='rgba(255,255,255,.15)';x.beginPath();x.arc(920,140,250,0,7);x.fill();
+    x.textAlign='center';x.textBaseline='middle';x.direction='ltr';x.fillStyle='#fff';x.font='italic 700 72px Georgia,serif';x.fillText('Nadra',540,110);
+    x.beginPath();if(x.roundRect)x.roundRect(80,200,920,800,44);else x.rect(80,200,920,800);x.fillStyle='#fff';x.fill();
+    var ac=m?'#1c6dd0':'#d6336c';
+    x.fillStyle=ac;x.font='bold 84px '+F;
+    wrapT(x,w.de,820).slice(0,2).forEach(function(l,i,a){x.fillText(l,540,380+(i-(a.length-1)/2)*96)});
+    x.direction='rtl';x.fillStyle='#222';x.font='bold 64px '+F;
+    wrapT(x,w.ar,820).slice(0,2).forEach(function(l,i,a){x.fillText(l,540,580+(i-(a.length-1)/2)*76)});
+    if(w.ex_de){x.direction='ltr';x.fillStyle='#555';x.font='italic 40px '+F;wrapT(x,w.ex_de,820).slice(0,2).forEach(function(l,i){x.fillText(l,540,740+i*52)});
+      x.direction='rtl';x.fillStyle='#888';x.font='38px '+F;wrapT(x,w.ex_ar,820).slice(0,2).forEach(function(l,i){x.fillText(l,540,880+i*50)})}
+    c.toBlob(res,'image/png');
+  });
+}
+function showImg(url){
+  var o=document.createElement('div');o.className='ov';
+  o.innerHTML='<img alt=""><div>اضغط مطولًا على الصورة لحفظها أو مشاركتها</div><button class="btn" style="flex:none;min-width:140px">إغلاق</button>';
+  o.querySelector('img').src=url;o.querySelector('button').addEventListener('click',function(){o.remove()});document.body.appendChild(o);
+}
+async function shareCard(w){
+  var b=await cardBlob(w),f=new File([b],'nadra-card.png',{type:'image/png'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Nadra'});return}}catch(e){if(e&&e.name==='AbortError')return}
+  try{var d=await claude.use('downloads');if(d){await d.save({filename:'nadra-card.png',data:b});return}}catch(e){}
+  showImg(URL.createObjectURL(b));
+}
+$('ank').addEventListener('click',async function(){
+  var L=savedView();if(!L.length){$('sst').textContent='لا توجد كلمات للتصدير.';return}
+  function c(v){return String(v||'').replace(/[\t\n]/g,' ')}
+  var t=L.map(function(w){return c(w.de)+'\t'+c(w.ar)+(w.ex_de?'<br><i>'+c(w.ex_de)+'</i><br>'+c(w.ex_ar):'')+(S.notes[key(w)]?'<br>💡 '+c(S.notes[key(w)]):'')+'\t'+c((w.tag||'nadra').replace(/\s+/g,'_'))}).join('\n');
+  try{var d=await claude.use('downloads');if(!d)throw 0;await d.save({filename:'nadra-anki.txt',data:t});$('sst').textContent='تم الحفظ ✓ — في Anki: ملف ← استيراد'}
+  catch(e){copy(t);$('sst').textContent='تعذر التنزيل هنا، فتم نسخ القائمة إلى الحافظة (الصقها في ملف نصي ثم استوردها في Anki).'}
+});
+
+
+/* ===== document upload & translation ===== */
+function xml2txt(xml,kind){
+  var t=xml;
+  if(kind==='docx')t=t.replace(/<w:tab\/>/g,'\t').replace(/<w:br\/>/g,'\n').replace(/<\/w:p>/g,'\n');
+  else if(kind==='odt')t=t.replace(/<text:tab\/>/g,'\t').replace(/<text:line-break\/>/g,'\n').replace(/<\/text:(p|h)>/g,'\n');
+  else if(kind==='pptx')t=t.replace(/<\/a:p>/g,'\n');
+  t=t.replace(/<[^>]+>/g,'');
+  var ta=document.createElement('textarea');ta.innerHTML=t;return ta.value;
+}
+async function inflate(d,meth){if(meth===0)return d;var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(d);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+async function unzip(buf,test){
+  var dv=new DataView(buf),u8=new Uint8Array(buf),i=u8.length-22,out=[];
+  while(i>=0&&dv.getUint32(i,true)!==0x06054b50)i--;
+  if(i<0)throw new Error('الملف ليس مضغوطًا بشكل صحيح');
+  var n=dv.getUint16(i+10,true),p=dv.getUint32(i+16,true);
+  for(var k=0;k<n;k++){
+    if(dv.getUint32(p,true)!==0x02014b50)break;
+    var meth=dv.getUint16(p+10,true),csz=dv.getUint32(p+20,true),nl=dv.getUint16(p+28,true),el=dv.getUint16(p+30,true),cl=dv.getUint16(p+32,true),lo=dv.getUint32(p+42,true);
+    var name=new TextDecoder().decode(u8.subarray(p+46,p+46+nl));
+    if(test(name)){var ln=dv.getUint16(lo+26,true),le=dv.getUint16(lo+28,true),ds=lo+30+ln+le;out.push({name:name,data:await inflate(u8.subarray(ds,ds+csz),meth)})}
+    p+=46+nl+el+cl;
+  }
+  return out;
+}
+async function zipText(f,ext){
+  var buf=await f.arrayBuffer(),dec=new TextDecoder();
+  if(ext==='docx'){var e=await unzip(buf,function(n){return n==='word/document.xml'});if(!e.length)throw new Error('تعذر قراءة ملف docx');return xml2txt(dec.decode(e[0].data),'docx')}
+  if(ext==='odt'){var o=await unzip(buf,function(n){return n==='content.xml'});if(!o.length)throw new Error('تعذر قراءة ملف odt');return xml2txt(dec.decode(o[0].data),'odt')}
+  var sl=await unzip(buf,function(n){return /^ppt\/slides\/slide\d+\.xml$/.test(n)});
+  sl.sort(function(a,b){return parseInt(a.name.match(/\d+/)[0])-parseInt(b.name.match(/\d+/)[0])});
+  return sl.map(function(x){return xml2txt(dec.decode(x.data),'pptx')}).join('\n');
+}
+function rtfText(r){return r.replace(/\\par[d]?/g,'\n').replace(/\\'([0-9a-f]{2})/gi,function(m,h){return String.fromCharCode(parseInt(h,16))}).replace(/\\[a-z]+-?\d* ?/gi,'').replace(/[{}]/g,'')}
+function loadPdfJs(){
+  return new Promise(function(res,rej){
+    if(window.pdfjsLib)return res(window.pdfjsLib);
+    var sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    sc.onload=function(){window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';res(window.pdfjsLib)};
+    sc.onerror=function(){rej(new Error('تعذر تحميل مكتبة قراءة PDF'))};document.head.appendChild(sc);
+  });
+}
+async function ocrImages(list){
+  var sm=await getS(),lim=await sm.limits();if(lim&&lim.images===false)throw new Error('إرسال الصور غير مفعّل');
+  var bl=[];for(var i=0;i<list.length;i++)bl.push((await shrink(list[i])).blob);
+  var r=await sm('استخرج النص الكامل الموجود في الصور بالترتيب كما هو بدون ترجمة وبدون شرح. افصل الفقرات بسطر فارغ.',{images:bl,modelTier:'default',cache:false});
+  return (r.text||'').trim();
+}
+async function pdfText(f){
+  var L=await loadPdfJs(),pdf=await L.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise,out=[];
+  for(var p=1;p<=Math.min(pdf.numPages,60);p++){
+    var pg=await pdf.getPage(p),tc=await pg.getTextContent(),t='',ly=null;
+    tc.items.forEach(function(it){if(ly!==null&&Math.abs(it.transform[5]-ly)>2)t+='\n';else if(t&&!/\s$/.test(t))t+=' ';t+=it.str;ly=it.transform[5]});
+    out.push(t.replace(/([^.!?:\n])\n(?=\S)/g,'$1 '));
+  }
+  var txt=out.join('\n\n');
+  if(txt.replace(/\s/g,'').length<30){
+    $('dst').textContent='يبدو المستند ممسوحًا ضوئيًا، جاري قراءة أول الصفحات بالتعرف على الصور...';
+    var imgs=[];
+    for(var q=1;q<=Math.min(pdf.numPages,4);q++){var g=await pdf.getPage(q),vp=g.getViewport({scale:1.6}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;await g.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;imgs.push(await new Promise(function(r){cv.toBlob(r,'image/jpeg',0.85)}))}
+    txt=await ocrImages(imgs);
+  }
+  return txt;
+}
+$('dfi').addEventListener('change',async function(ev){
+  var f=ev.target.files[0];ev.target.value='';if(!f)return;
+  busy($('dst'),'جاري قراءة الملف...');$('dout').innerHTML='';$('dact').style.display='none';
+  try{
+    var ext=f.name.toLowerCase().split('.').pop(),txt='';
+    if(f.type.indexOf('image')===0)txt=await ocrImages([f]);
+    else if(ext==='pdf')txt=await pdfText(f);
+    else if(ext==='docx'||ext==='odt'||ext==='pptx')txt=await zipText(f,ext);
+    else if(ext==='doc')throw new Error('صيغة .doc القديمة غير مدعومة. احفظ الملف بصيغة docx أو pdf ثم ارفعه.');
+    else{txt=await f.text();if(ext==='rtf')txt=rtfText(txt);else if(ext==='html'||ext==='htm')txt=new DOMParser().parseFromString(txt,'text/html').body.textContent}
+    txt=txt.replace(/\r/g,'').replace(/[ \t]+\n/g,'\n').trim();
+    if(!txt)throw new Error('لم أجد نصًا في الملف.');
+    $('dtx').value=txt;$('dst').textContent='تمت قراءة «'+f.name+'» ('+txt.length+' حرفًا). راجع النص ثم اضغط ترجم.';
+  }catch(e){fail($('dst'),e)}
+});
+var DT={pairs:[]},dAbort=null;
+function addPair(o,t){
+  var b=document.createElement('div');b.className='box';
+  b.innerHTML='<div class="tg"></div><div class="e2" dir="auto" style="color:var(--de);font-weight:600"></div><div class="e2" dir="auto" style="margin-top:6px"></div>';
+  b.children[1].textContent=o;b.children[2].textContent=t;$('dout').appendChild(b);
+}
+$('dgo').addEventListener('click',async function(){
+  var t=$('dtx').value.trim();if(!t)return;
+  var note='';if(t.length>30000){t=t.slice(0,30000);note=' (تُرجم أول 30 ألف حرف فقط)'}
+  var paras=t.split(/\n+/).map(function(x){return x.trim()}).filter(Boolean),chunks=[],cur=[],len=0;
+  paras.forEach(function(p){if(cur.length&&(len+p.length>2200||cur.length>=12)){chunks.push(cur);cur=[];len=0}cur.push(p);len+=p.length});
+  if(cur.length)chunks.push(cur);
+  DT.pairs=[];$('dout').innerHTML='';$('dact').style.display='none';$('dgo').style.display='none';$('dstop').style.display='';
+  dAbort=new AbortController();
+  try{
+    var sm=await getS();
+    for(var i=0;i<chunks.length;i++){
+      busy($('dst'),'جاري ترجمة الجزء '+(i+1)+' من '+chunks.length+note);
+      var c=chunks[i];
+      var r=await sm.json('ترجم كل فقرة من الفقرات التالية: إن كانت بالألمانية فإلى العربية، وإن كانت بالعربية فإلى الألمانية. حافظ على الأرقام والأسماء والمعنى. أعد JSON فقط بدون ```: مصفوفة نصوص فيها '+c.length+' عنصرًا بنفس ترتيب الفقرات.\n'+JSON.stringify(c),{modelTier:'default',cache:false,signal:dAbort.signal});
+      if(!Array.isArray(r))r=[String(r&&r.text||r)];
+      c.forEach(function(p,j){var tr=r[j]!=null?String(r[j]):'';DT.pairs.push([p,tr]);addPair(p,tr)});
+    }
+    $('dst').textContent='اكتملت الترجمة ✓ ('+DT.pairs.length+' فقرة)'+note;$('dact').style.display='flex';act(Math.max(1,Math.ceil(DT.pairs.length/5)));
+  }catch(e){if(e&&e.name==='AbortError'){$('dst').textContent='تم الإيقاف.';if(DT.pairs.length)$('dact').style.display='flex'}else fail($('dst'),e)}
+  $('dgo').style.display='';$('dstop').style.display='none';
+});
+$('dstop').addEventListener('click',function(){if(dAbort)dAbort.abort()});
+$('drd').addEventListener('click',function(){var t=$('dtx').value.trim();if(!t)return;$('rdt').value=t;go('read');$('rdgo').click()});
+$('dcp').addEventListener('click',function(){copy(DT.pairs.map(function(p){return p[1]}).join('\n\n'));$('dst').textContent='تم نسخ الترجمة ✓'});
+async function dlText(name,txt){
+  try{var d=await claude.use('downloads');if(!d)throw 0;await d.save({filename:name,data:'\uFEFF'+txt});$('dst').textContent='تم الحفظ ✓'}
+  catch(e){copy(txt);$('dst').textContent='تعذر التنزيل هنا، فتم نسخ النص إلى الحافظة.'}
+}
+$('ddl1').addEventListener('click',function(){dlText('nadra-translation.txt',DT.pairs.map(function(p){return p[1]}).join('\n\n'))});
+$('ddl2').addEventListener('click',function(){dlText('nadra-original-translation.txt',DT.pairs.map(function(p){return p[0]+'\n'+p[1]}).join('\n\n'))});
+
+$('fz').value=S.fz;$('auto').checked=!!S.auto;zoom(S.fz);sx(S.sx);applyDir();renderWod();renderHist();renderStats();
+window.addEventListener('error',function(e){$('hst').textContent='خطأ: '+e.message});
+})();
+</script>
+<script>
+(function(){
+ var $=function(i){return document.getElementById(i)};
+ function g(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+ function prov(){return g('n-prov')||'gemini'}
+ function st(){$('nprov').value=prov();$('nks').textContent=g('n-key-'+prov())?'المفتاح محفوظ ✓ — الميزات الذكية تحتاج اتصالًا بالإنترنت.':'لم يُحفظ مفتاح بعد. الميزات المحلية تعمل دون إنترنت.'}
+ $('nprov').addEventListener('change',function(){try{localStorage.setItem('n-prov',$('nprov').value)}catch(e){}st()});
+ $('nkok').addEventListener('click',function(){var v=$('nkey').value.trim();if(!v)return;try{localStorage.setItem('n-key-'+prov(),v);$('nkey').value=''}catch(e){$('nks').textContent='تعذر حفظ المفتاح في هذا المتصفح.';return}st()});
+ $('nkdel').addEventListener('click',function(){try{localStorage.removeItem('n-key-'+prov())}catch(e){}st()});
+ st();
+})();
+</script>
+</body>
+</html>
