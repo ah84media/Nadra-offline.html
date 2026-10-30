@@ -266,7 +266,7 @@ select.tgi{width:100%;margin-bottom:6px}
 <div class="box"><div class="btns"><div class="btn">📎 اختر ملفًا<input id="dfi" type="file" accept=".txt,.md,.csv,.html,.htm,.rtf,.json,.pdf,.docx,.odt,.pptx,image/*"></div></div>
 <div class="st">يدعم: TXT وPDF وDOCX وPPTX وODT وRTF وHTML وCSV وصور المستندات. ملفات .doc القديمة: احفظها بصيغة docx أو pdf أولًا. المستندات الطويلة تستهلك من حدّ استخدامك.</div></div>
 <textarea id="dtx" class="ta" style="min-height:150px" placeholder="أو الصق النص هنا. وبعد رفع ملف سيظهر نصه هنا ويمكنك تعديله قبل الترجمة"></textarea>
-<div class="btns" style="margin:8px 0"><button class="btn" id="dgo">ترجم</button><button class="btn s" id="dstop" style="display:none">إيقاف</button><button class="btn s" id="drd">📖 القارئ التفاعلي</button></div>
+<div class="btns" style="margin:8px 0"><button class="btn" id="dgo">ترجم</button><button class="btn s" id="dstop" style="display:none">إيقاف</button><button class="btn s" id="drd">📖 القارئ التفاعلي</button><button class="btn s" id="dpg" style="display:none">🖼️ ترجمة على صفحات PDF</button></div>
 <div id="dst" class="st"></div><div id="dout"></div>
 <div class="btns" id="dact" style="display:none"><button class="chip" id="dcp">📋 نسخ الترجمة</button><button class="chip" id="ddl1">⬇️ الترجمة .txt</button><button class="chip" id="ddl2">⬇️ أصل + ترجمة</button></div>
 </section>
@@ -529,14 +529,73 @@ function shrink(src){
     img.src=URL.createObjectURL(src);
   });
 }
+var IMGP='حلّل صورة الورقة. أعد JSON فقط بدون ```: {"blocks":[{"box":[ymin,xmin,ymax,xmax],"de":"النص الأصلي كما هو","ar":"ترجمته العربية"}],"words":[{"de":"كلمة ألمانية مهمة (للاسم مع المقال)","ar":"معناها","ex_de":"مثال قصير","ex_ar":"ترجمة المثال"}]}. القواعد: box بإحداثيات من 0 إلى 1000 (ymin,xmin,ymax,xmax) تحيط بدقة بكل فقرة أو سطر متصل من النص الألماني، وغطِّ كل النص المكتوب في الصورة بالترتيب، وترجم الألماني إلى العربية، وتجاهل النصوص العربية الموجودة أصلًا، وأعد من 10 إلى 20 كلمة مهمة في words.';
+function loadImgEl(blob){return new Promise(function(res,rej){var im=new Image();im.onload=function(){res(im)};im.onerror=function(){rej(new Error('تعذر قراءة الصورة'))};im.src=URL.createObjectURL(blob)})}
+function sampleBg(x,x0,y0,x1,y1,W,H){
+  var r=0,g=0,b=0,n=0;
+  function add(ax,ay,aw,ah){ax=Math.max(0,Math.floor(ax));ay=Math.max(0,Math.floor(ay));aw=Math.min(W-ax,Math.ceil(aw));ah=Math.min(H-ay,Math.ceil(ah));if(aw<1||ah<1)return;var d=x.getImageData(ax,ay,aw,ah).data;for(var i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2];n++}}
+  add(x0,y0-4,x1-x0,3);add(x0,y1+1,x1-x0,3);add(x0-4,y0,3,y1-y0);add(x1+1,y0,3,y1-y0);
+  return n?[Math.round(r/n),Math.round(g/n),Math.round(b/n)]:[255,255,255];
+}
+async function renderOverlay(blob,blocks){
+  var im=await loadImgEl(blob),W=im.naturalWidth,H=im.naturalHeight,c=document.createElement('canvas');c.width=W;c.height=H;
+  var x=c.getContext('2d',{willReadFrequently:true}),F='system-ui,"Segoe UI",Tahoma,sans-serif';x.drawImage(im,0,0);
+  blocks.forEach(function(b){
+    var bx=b.box;if(!bx||bx.length<4||!b.ar)return;
+    var y0=Math.max(0,bx[0]/1000*H),x0=Math.max(0,bx[1]/1000*W),y1=Math.min(H,bx[2]/1000*H),x1=Math.min(W,bx[3]/1000*W);
+    if(y1-y0<6||x1-x0<10)return;
+    var col=sampleBg(x,x0,y0,x1,y1,W,H),lum=0.299*col[0]+0.587*col[1]+0.114*col[2];
+    x.fillStyle='rgb('+col.join(',')+')';x.fillRect(x0-2,y0-2,x1-x0+4,y1-y0+4);
+    x.fillStyle=lum>140?'#111':'#fff';x.direction='rtl';x.textAlign='right';x.textBaseline='top';
+    var bw=x1-x0-6,bh=y1-y0-2,fs=Math.min(60,Math.max(10,Math.floor(bh))),lines=[];
+    for(;fs>=10;fs--){x.font=fs+'px '+F;lines=wrapT(x,b.ar,bw);if(lines.length*fs*1.25<=bh)break}
+    fs=Math.max(fs,10);x.font=fs+'px '+F;
+    var th=lines.length*fs*1.25,ty=y0+Math.max(0,(bh-th)/2);
+    lines.forEach(function(l,i){x.fillText(l,x1-3,ty+i*fs*1.25)});
+  });
+  return c;
+}
+async function translateImage(blob){
+  var s=await getS(),lim=await s.limits();if(lim&&lim.images===false)throw new Error('إرسال الصور غير مفعّل');
+  var sh=await shrink(blob);
+  var r=await s.json(IMGP,{images:[sh.blob],modelTier:'default',cache:false});
+  if(Array.isArray(r))r={blocks:[],words:r};
+  var blocks=r.blocks||[],words=r.words||[];
+  return {canvas:await renderOverlay(sh.blob,blocks),blocks:blocks,words:words};
+}
+async function outBlob(b,name){
+  var f=new File([b],name,{type:b.type||'image/jpeg'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Nadra'});return}}catch(e){if(e&&e.name==='AbortError')return}
+  try{var d=await claude.use('downloads');if(d){await d.save({filename:name,data:b});return}}catch(e){}
+  showImg(URL.createObjectURL(b));
+}
+function saveCanvas(cv,name){cv.toBlob(function(b){outBlob(b,name)},'image/jpeg',0.92)}
+var CIM=null;
+function showCim(tab){
+  var b=$('cres');
+  b.innerHTML='<div class="btns" style="margin:6px 0"><button class="chip'+(tab==='img'?' on':'')+'" data-t="img">🖼️ على الصورة</button><button class="chip'+(tab==='txt'?' on':'')+'" data-t="txt">📝 النص</button><button class="chip'+(tab==='wd'?' on':'')+'" data-t="wd">📚 المفردات ('+CIM.words.length+')</button></div><div id="cbody"></div>';
+  b.querySelectorAll('[data-t]').forEach(function(x){x.addEventListener('click',function(){showCim(x.getAttribute('data-t'))})});
+  var body=$('cbody');
+  if(tab==='img'){
+    var im=document.createElement('img');im.src=CIM.canvas.toDataURL('image/jpeg',0.9);im.style.cssText='width:100%;border-radius:14px';im.alt='';body.appendChild(im);
+    body.insertAdjacentHTML('beforeend','<div class="btns" style="margin-top:8px"><button class="btn" id="cmsave">💾 حفظ / مشاركة الصورة</button></div>');
+    $('cmsave').addEventListener('click',function(){saveCanvas(CIM.canvas,'nadra-translated.jpg')});
+  }else if(tab==='txt'){
+    if(!CIM.blocks.length)body.innerHTML='<div class="empty">لا يوجد نص.</div>';
+    CIM.blocks.forEach(function(p){var d=document.createElement('div');d.className='box';d.innerHTML='<div class="e1"></div><div class="e2"></div>';d.children[0].textContent=p.de||'';d.children[1].textContent=p.ar||'';body.appendChild(d)});
+    if(CIM.blocks.length){body.insertAdjacentHTML('beforeend','<div class="btns"><button class="chip" id="cmcp">📋 نسخ الترجمة</button><button class="chip" id="cmcp2">📋 نسخ الأصل</button></div>');
+      $('cmcp').addEventListener('click',function(){copy(CIM.blocks.map(function(p){return p.ar}).join('\n\n'))});
+      $('cmcp2').addEventListener('click',function(){copy(CIM.blocks.map(function(p){return p.de}).join('\n\n'))})}
+  }else{
+    var st=document.createElement('div');st.className='st';body.appendChild(st);var lb=document.createElement('div');body.appendChild(lb);
+    renderList(lb,st,CIM.words);
+  }
+}
 async function doImage(file){
-  busy($('cst'),'جاري قراءة الصورة وترجمتها...');$('cres').innerHTML='';
+  busy($('cst'),'جاري قراءة الصورة وترجمتها...');$('cres').innerHTML='';$('pv').style.display='none';
   try{
-    var s=await getS();
-    var lim=await s.limits();if(lim&&lim.images===false)throw new Error('إرسال الصور غير مفعّل');
-    var sh=await shrink(file);var pv=$('pv');pv.src=sh.url;pv.style.display='block';
-    var p=SYS+'هذه صورة ورقة. استخرج كل الكلمات والجمل الألمانية المكتوبة فيها بالترتيب (حتى بخط اليد، وصحّح الأخطاء الإملائية الواضحة) مع ترجمتها العربية. لكل كلمة مثال؛ والجملة الكاملة تُترجم كما هي. تجاهل الكلمات العربية الموجودة أصلًا في الصورة.';
-    renderList($('cres'),$('cst'),await s.json(p,{images:[sh.blob],modelTier:'default',cache:false}));
+    CIM=await translateImage(file);
+    $('cst').textContent='تمت الترجمة ✓';showCim('img');act(2);
   }catch(e){fail($('cst'),e)}
 }
 $('gal').addEventListener('change',function(ev){var f=ev.target.files[0];ev.target.value='';if(f)doImage(f)});
@@ -1105,11 +1164,11 @@ async function pdfText(f){
 }
 $('dfi').addEventListener('change',async function(ev){
   var f=ev.target.files[0];ev.target.value='';if(!f)return;
-  busy($('dst'),'جاري قراءة الملف...');$('dout').innerHTML='';$('dact').style.display='none';
+  busy($('dst'),'جاري قراءة الملف...');$('dout').innerHTML='';$('dact').style.display='none';DOC.pdf=null;$('dpg').style.display='none';
   try{
     var ext=f.name.toLowerCase().split('.').pop(),txt='';
-    if(f.type.indexOf('image')===0)txt=await ocrImages([f]);
-    else if(ext==='pdf')txt=await pdfText(f);
+    if(f.type.indexOf('image')===0){$('dst').textContent='';go('cam');doImage(f);return}
+    else if(ext==='pdf'){DOC.pdf=f;$('dpg').style.display='';txt=await pdfText(f)}
     else if(ext==='docx'||ext==='odt'||ext==='pptx')txt=await zipText(f,ext);
     else if(ext==='doc')throw new Error('صيغة .doc القديمة غير مدعومة. احفظ الملف بصيغة docx أو pdf ثم ارفعه.');
     else{txt=await f.text();if(ext==='rtf')txt=rtfText(txt);else if(ext==='html'||ext==='htm')txt=new DOMParser().parseFromString(txt,'text/html').body.textContent}
@@ -1118,7 +1177,7 @@ $('dfi').addEventListener('change',async function(ev){
     $('dtx').value=txt;$('dst').textContent='تمت قراءة «'+f.name+'» ('+txt.length+' حرفًا). راجع النص ثم اضغط ترجم.';
   }catch(e){fail($('dst'),e)}
 });
-var DT={pairs:[]},dAbort=null;
+var DT={pairs:[]},dAbort=null,DOC={pdf:null};
 function addPair(o,t){
   var b=document.createElement('div');b.className='box';
   b.innerHTML='<div class="tg"></div><div class="e2" dir="auto" style="color:var(--de);font-weight:600"></div><div class="e2" dir="auto" style="margin-top:6px"></div>';
@@ -1144,6 +1203,24 @@ $('dgo').addEventListener('click',async function(){
     $('dst').textContent='اكتملت الترجمة ✓ ('+DT.pairs.length+' فقرة)'+note;$('dact').style.display='flex';act(Math.max(1,Math.ceil(DT.pairs.length/5)));
   }catch(e){if(e&&e.name==='AbortError'){$('dst').textContent='تم الإيقاف.';if(DT.pairs.length)$('dact').style.display='flex'}else fail($('dst'),e)}
   $('dgo').style.display='';$('dstop').style.display='none';
+});
+$('dpg').addEventListener('click',async function(){
+  if(!DOC.pdf)return;busy($('dst'),'جاري تجهيز الصفحات...');$('dout').innerHTML='';
+  try{
+    var L=await loadPdfJs(),pdf=await L.getDocument({data:new Uint8Array(await DOC.pdf.arrayBuffer())}).promise,n=Math.min(pdf.numPages,3);
+    for(var q=1;q<=n;q++){
+      busy($('dst'),'ترجمة الصفحة '+q+' من '+n+'...');
+      var g=await pdf.getPage(q),vp=g.getViewport({scale:1.6}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
+      await g.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      var bl=await new Promise(function(r){cv.toBlob(r,'image/jpeg',0.85)}),t=await translateImage(bl);
+      var box=document.createElement('div');box.className='box';
+      var im=document.createElement('img');im.src=t.canvas.toDataURL('image/jpeg',0.85);im.style.cssText='width:100%;border-radius:12px';im.alt='';box.appendChild(im);
+      var bt=document.createElement('button');bt.className='btn';bt.style.marginTop='8px';bt.textContent='💾 حفظ الصفحة '+q;
+      (function(c,k){bt.addEventListener('click',function(){saveCanvas(c,'nadra-page-'+k+'.jpg')})})(t.canvas,q);
+      box.appendChild(bt);$('dout').appendChild(box);
+    }
+    $('dst').textContent='تمت ترجمة '+n+' صفحة على الصورة ✓ (أول 3 صفحات)';act(n);
+  }catch(e){fail($('dst'),e)}
 });
 $('dstop').addEventListener('click',function(){if(dAbort)dAbort.abort()});
 $('drd').addEventListener('click',function(){var t=$('dtx').value.trim();if(!t)return;$('rdt').value=t;go('read');$('rdgo').click()});
